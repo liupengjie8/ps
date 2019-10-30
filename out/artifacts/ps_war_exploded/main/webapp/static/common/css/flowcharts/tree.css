@@ -1,0 +1,125 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	font-family: "microsoft yahei", "simhei", "simsun";
+}
+ul, li {
+	list-style: none;
+	margin: 0px;
+	padding: 0
+}
+* {
+	padding: 0;
+	margin: 0
+}
+#app {
+	margin: auto;
+}
+.el-col {
+	border: solid 1px #1890FF;
+}
+.board {
+	position: relative;
+	overflow: hidden;
+	width: 800px;
+	height: 400px;
+	margin-left:100px;
+}
+.node {
+	width: 200px;
+	height: 100px;
+	border: 1px solid #1890FF;
+	position: absolute;
+	background: #fff;
+	z-index: 100;
+	left: 0;
+	top: 0;
+	border-radius: 4px
+}
+.node:hover{
+    z-index: 200;
+}
+.symbol {
+	width: 30px;
+	height: 30px;
+	border: solid 1px #1890FF;
+	background: #1890FF;
+	position: absolute;
+	z-index: 10;
+	line-height: 30px;
+	color: #f00;
+	text-align: center;
+	border-radius: 50px;
+	color: #fff
+}
+.board > svg {
+	width: 100%;
+	height: 100%;
+}
+.tit {
+	background: #1890FF;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	color: #fff;
+	padding: 3px 0;
+	font-size: 1px;
+	height:38px;
+}
+.board > line {
+	border: solid 1px #1890FF;
+}
+.text {
+	font-size: 10px;
+	padding: 0 10px
+}
+.tree_ico_list {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	margin: 5px 0 10px;
+}
+.tree_ico_list li {
+	position: relative
+}
+.tree_ico_list img {
+	margin: 0 2px
+}
+.tree_ico_list .tree_main {
+	width: 230px;
+	padding: 10px;
+	display: none;
+	background: #fff;
+	font-size: 14px;
+	border-radius: 4px;
+	z-index: 999;
+	color: #000000;
+	min-height: 100px;
+	position: absolute;
+	top: 30px;
+	-moz-box-shadow: 0px 0px 3px #CCCCCC;
+	-webkit-box-shadow: 0px 0px 3px #CCCCCC;
+	box-shadow: 0px 0px 3px #CCCCCC;
+}
+.tree_ico_list .elastic:hover .tree_main {
+	display: block
+}
+
+
+.tree_head {
+	width: 100%;
+	background: #fff
+}
+
+.tree_nav_list {
+	width: 100%;
+	height: 90px;
+	background-color: #fff;
+	position: relative;
+}
+
+.tree_nav_list img{
+	float: left;
+	margin: 30px 8px 0px 0px;
+}

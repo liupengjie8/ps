@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jeeplus.modules.stand.ope.flowchart.mapper.OpeFlowChartMapper">
+    <sql id="paramSql">
+		<if test="admissionDateTimeStart!=null and admissionDateTimeEnd!=null">
+			 and trunc(ADMISSION_DATE_TIME) between trunc(to_date(#{admissionDateTimeStart},'yyyy/MM/dd')) and  trunc(to_date(#{admissionDateTimeEnd},'yyyy/MM/dd'))
+	    </if>
+	    <if test="dischargeDateTimeStart!=null and dischargeDateTimeEnd!=null">
+			 and trunc(ADMISSION_DATE_TIME) between trunc(to_date(#{dischargeDateTimeStart},'yyyy/MM/dd')) and  trunc(to_date(#{dischargeDateTimeEnd},'yyyy/MM/dd'))
+	    </if>
+	    <if test="operator!=null and operator!=''">
+			 and operator like '%'||#{operator}||'%'
+		</if>
+		<if test="patientId!=null and patientId!=''">
+		 and patient_id =#{patientId}
+		</if>
+		<if test="visitId!=null and visitId!=''">
+		 and visitId =#{visitId}
+		</if>
+		<if test="name!=null and name!=''">
+			 and name like '%'||#{name}||'%'
+		</if>
+		 <if test="birthPlace!=null and birthPlace!=''">
+			 and birth_Place like '%'||#{birthPlace}||'%'
+		</if>
+		 <if test="identity!=null and identity!=''">
+			 and identity like '%'||#{identity}||'%'
+		</if>
+		 <if test="chargeType!=null and chargeType!=''">
+			 and charge_type like '%'||#{chargeType}||'%'
+		</if>
+		 <if test="operationCode!=null and operationCode!=''">
+			 and operation_code like '%'||#{operationCode}||'%'
+		</if>
+		 <if test="operationDesc!=null and operationDesc!=''">
+			 and operation_Desc like '%'||#{operationDesc}||'%'
+		</if>
+		<if test="chiefDoctor!=null and chiefDoctor!=''">
+			 and chief_doctor like '%'||#{chiefDoctor}||'%'
+		</if>
+		 <if test="anaesthesiaMethod!=null and anaesthesiaMethod!=''">
+			 and anaesthesia_method like '%'||#{anaesthesiaMethod}||'%'
+		</if>
+		<if test="opeStartTimeStart!=null and opeStartTimeEnd!=null">
+			 and trunc(OPE_START_TIME) between trunc(to_date(#{opeStartTimeStart},'yyyy/MM/dd')) and  trunc(to_date(#{opeStartTimeEnd},'yyyy/MM/dd'))
+	    </if>
+	    <if test="opeEndTimeStart!=null and opeEndTimeEnd!=null">
+			 and trunc(OPE_END_TIME) between trunc(to_date(#{opeEndTimeStart},'yyyy/MM/dd')) and  trunc(to_date(#{opeEndTimeEnd},'yyyy/MM/dd'))
+	    </if>
+	    <if test="opeartingDateStart!=null and opeartingDateEnd!=null">
+			 and trunc(OPERATING_DATE) between trunc(to_date(#{opeartingDateStart},'yyyy/MM/dd')) and  trunc(to_date(#{opeartingDateEnd},'yyyy/MM/dd'))
+	    </if>
+	    <if test="sdate!=null and edate!=null">
+			 and trunc(DATA_DATE) between trunc(to_date(#{sdate},'yyyy/MM/dd')) and  trunc(to_date(#{edate},'yyyy/MM/dd'))
+	    </if>
+	     <if test="dataDateStart!=null and dataDateEnd!=null and dataDateStart!='' and dataDateEnd!=''" >
+			 and trunc(DATA_DATE) between trunc(to_date(#{dataDateStart},'yyyy/MM/dd')) and  trunc(to_date(#{dataDateEnd},'yyyy/MM/dd'))
+	    </if>
+	</sql>
+	
+    <select id="getFlowChartData" resultType="com.jeeplus.modules.stand.ope.flowchart.entity.OpeFlowChart" parameterType="com.jeeplus.modules.stand.ope.flowchart.entity.OpeFlowChart">
+		SELECT 
+		a.id AS "id",
+		a.page_id AS "pageId",
+		a.t_text AS "text",
+		a.next_low_level AS "nextLowLevel",
+		a.t_row AS "row",
+		a.t_col AS "col",
+		a.title AS "title",
+		a.description AS "description",
+		a.status AS "status",
+		a.document_url AS "documentUrl",
+		a.chart_id AS "chartId"
+		FROM ope_flow_chart a
+		
+		WHERE a.page_id = #{pageId}
+	</select>
+	<select id="getFlowChartLineData" resultType="com.jeeplus.modules.stand.ope.flowchart.entity.OpeFlowChart" parameterType="com.jeeplus.modules.stand.ope.flowchart.entity.OpeFlowChart">
+		SELECT 
+		a.source as "source",
+		a.target AS "target",
+		a.SYMBOLSTITLE AS "symbol"
+		FROM OPE_FLOW_CHART_LINE a
+		WHERE a.page_id = #{pageId}
+	</select>
+	<select id="getIndexIdsByChartId" resultType="string" parameterType="com.jeeplus.modules.stand.ope.flowchart.entity.OpeFlowChart">
+		select indexs_id from ope_qc_stand_config t where flow_id = #{chartId}
+	</select>
+	<select id="getNotQuilifiedRecordCount" resultType="int" parameterType="com.jeeplus.modules.stand.ope.opebarchart.entity.OpeAllColumn">
+		select count(1) from pre_ope_patient_index_rec t where 
+		INDEX_ID = #{indexId} and IS_QUALIFIED=0
+		<include refid="paramSql"/>
+	</select>
+	
+</mapper>

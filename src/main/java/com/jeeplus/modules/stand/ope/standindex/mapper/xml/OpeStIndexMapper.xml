@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jeeplus.modules.stand.ope.standindex.mapper.OpeStIndexMapper">
+    
+	<sql id="opeStIndexColumns">
+		a.id AS "id",
+		a.create_by AS "createBy.id",
+		a.create_date AS "createDate",
+		a.update_by AS "updateBy.id",
+		a.update_date AS "updateDate",
+		a.del_flag AS "delFlag",
+		a.element AS "element",
+		a.index_name AS "indexName",
+		a.index_cal_method AS "indexCalMethod",
+		a.cal_factor_one AS "calFactorOne",
+		a.cal_factor_two AS "calFactorTwo",
+		a.cal_factor_three AS "calFactorThree",
+		a.cal_mode AS "calMode",
+		a.remarks AS "remarks"
+	</sql>
+	
+	<sql id="opeStIndexJoins">
+		
+	</sql>
+	
+    
+	<select id="get" resultType="OpeStIndex" >
+		SELECT 
+			<include refid="opeStIndexColumns"/>
+		FROM ope_st_index a
+		<include refid="opeStIndexJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="OpeStIndex" >
+		SELECT 
+			<include refid="opeStIndexColumns"/>
+		FROM ope_st_index a
+		<include refid="opeStIndexJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+			${dataScope}
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="OpeStIndex" >
+		SELECT 
+			<include refid="opeStIndexColumns"/>
+		FROM ope_st_index a
+		<include refid="opeStIndexJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+			${dataScope}
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO ope_st_index(
+			id,
+			create_by,
+			create_date,
+			update_by,
+			update_date,
+			del_flag,
+			element,
+			index_name,
+			index_cal_method,
+			cal_factor_one,
+			cal_factor_two,
+			cal_factor_three,
+			cal_mode,
+			remarks
+		) VALUES (
+			#{id},
+			#{createBy.id},
+			#{createDate},
+			#{updateBy.id},
+			#{updateDate},
+			#{delFlag},
+			#{element},
+			#{indexName},
+			#{indexCalMethod},
+			#{calFactorOne},
+			#{calFactorTwo},
+			#{calFactorThree},
+			#{calMode},
+			#{remarks}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE ope_st_index SET 	
+			update_by = #{updateBy.id},
+			update_date = #{updateDate},
+			element = #{element},
+			index_name = #{indexName},
+			index_cal_method = #{indexCalMethod},
+			cal_factor_one = #{calFactorOne},
+			cal_factor_two = #{calFactorTwo},
+			cal_factor_three = #{calFactorThree},
+			cal_mode = #{calMode},
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+	
+	
+	<!--物理删除-->
+	<update id="delete">
+		DELETE FROM ope_st_index
+		WHERE id = #{id}
+	</update>
+	
+	<!--逻辑删除-->
+	<update id="deleteByLogic">
+		UPDATE ope_st_index SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
+	
+	<!-- 根据实体名称和字段名称和字段值获取唯一记录 -->
+	<select id="findUniqueByProperty" resultType="OpeStIndex" statementType="STATEMENT">
+		select * FROM ope_st_index  where ${propertyName} = '${value}'
+	</select>
+	
+</mapper>

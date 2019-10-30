@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jeeplus.modules.stand.ope.standconfig.mapper.OpeQcStandConfigMapper">
+    
+	<sql id="opeQcStandConfigColumns">
+		a.id AS "id",
+		a.create_by AS "createBy.id",
+		a.create_date AS "createDate",
+		a.update_by AS "updateBy.id",
+		a.update_date AS "updateDate",
+		a.del_flag AS "delFlag",
+		a.flow_id AS "opeFlowChartTable.chartId",
+		a.stage AS "stage",
+		a.segment AS "segment",
+		a.node AS "node",
+		a.stand_type AS "standType",
+		a.source_chapter AS "sourceChapter",
+		a.stand_content AS "standContent",
+		a.indexs AS "indexs",
+		a.indexs_id AS "indexsId",
+		a.remarks AS "remarks",
+				
+				
+				
+				
+				
+				
+		opeFlowChartTable.t_text AS "opeFlowChartTable.text"
+	</sql>
+	
+	<sql id="opeQcStandConfigJoins">
+		
+		LEFT JOIN ope_flow_chart opeFlowChartTable ON opeFlowChartTable.id = a.flow_id
+	</sql>
+	
+    
+	<select id="get" resultType="OpeQcStandConfig" >
+		SELECT 
+			<include refid="opeQcStandConfigColumns"/>
+		FROM ope_qc_stand_config a
+		<include refid="opeQcStandConfigJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="OpeQcStandConfig" >
+		SELECT 
+			<include refid="opeQcStandConfigColumns"/>
+		FROM ope_qc_stand_config a
+		<include refid="opeQcStandConfigJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+			${dataScope}
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="OpeQcStandConfig" >
+		SELECT 
+			<include refid="opeQcStandConfigColumns"/>
+		FROM ope_qc_stand_config a
+		<include refid="opeQcStandConfigJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+			${dataScope}
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO ope_qc_stand_config(
+			id,
+			create_by,
+			create_date,
+			update_by,
+			update_date,
+			del_flag,
+			flow_id,
+			stage,
+			segment,
+			node,
+			stand_type,
+			source_chapter,
+			stand_content,
+			indexs,
+			indexs_id,
+			remarks
+		) VALUES (
+			#{id},
+			#{createBy.id},
+			#{createDate},
+			#{updateBy.id},
+			#{updateDate},
+			#{delFlag},
+			#{opeFlowChartTable.chartId},
+			#{stage},
+			#{segment},
+			#{node},
+			#{standType},
+			#{sourceChapter},
+			#{standContent},
+			#{indexs},
+			#{indexsId},
+			#{remarks}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE ope_qc_stand_config SET 	
+			update_by = #{updateBy.id},
+			update_date = #{updateDate},
+			flow_id = #{opeFlowChartTable.chartId},
+			stage = #{stage},
+			segment = #{segment},
+			node = #{node},
+			stand_type = #{standType},
+			source_chapter = #{sourceChapter},
+			stand_content = #{standContent},
+			indexs = #{indexs},
+			indexs_id = #{indexsId},
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+	
+	
+	<!--物理删除-->
+	<update id="delete">
+		DELETE FROM ope_qc_stand_config
+		WHERE id = #{id}
+	</update>
+	
+	<!--逻辑删除-->
+	<update id="deleteByLogic">
+		UPDATE ope_qc_stand_config SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
+	
+	<!-- 根据实体名称和字段名称和字段值获取唯一记录 -->
+	<select id="findUniqueByProperty" resultType="OpeQcStandConfig" statementType="STATEMENT">
+		select * FROM ope_qc_stand_config  where ${propertyName} = '${value}'
+	</select>
+	<select id="getNodeList" resultType="string">
+		select distinct node from OPE_QC_STAND_CONFIG t 
+	</select>
+	<select id="getIndexListByNode" parameterType="string" resultType="com.jeeplus.modules.stand.ope.standindex.entity.OpeStIndex">
+		select id,index_name indexName from ope_st_index where 1=1
+		 <if test="node!=null and node!=''">
+		  and id in(
+			select regexp_substr(q.ids, '[^,]+', 1, rownum, 'i')
+			  from (select to_char(wmsys.wm_concat(to_char(s.indexs_id))) as ids
+			          from OPE_QC_STAND_CONFIG s where
+			         s.node = #{node}) q
+			         
+			connect by rownum &lt;=
+			           LENGTH(q.ids) - LENGTH(REGEXP_REPLACE(q.ids, ',', '')) + 1)
+         </if>
+	</select>
+	<select id="getParentlist" resultType="map" >
+		select node "id", node "name",0 as "level", 'true' "no_checkbox" from OPE_QC_STAND_CONFIG t group by node
+	</select>
+	<select id="getChildlist" resultType="map" >
+		select t.id         "id",
+       index_name "name",
+       1          as "level",
+      
+       o.node         "parent_id",
+       t.id         as "code"
+  from ope_st_index t left join OPE_QC_STAND_CONFIG o
+  on instr(','||o.indexs_id||',',','||t.id||',')>0
+  where o.node is not null
+
+	</select>
+</mapper>

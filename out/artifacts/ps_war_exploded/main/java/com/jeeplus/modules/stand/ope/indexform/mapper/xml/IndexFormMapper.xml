@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jeeplus.modules.stand.ope.indexform.mapper.IndexFormMapper">
+	<!--条件sql-->
+    <sql id="paramSql">
+        <if test="indexId!=null and indexId!=''">
+		 and index_id =#{indexId}
+		</if>
+		<if test="indexName!=null and indexName!=''">
+		 and INDEX_NAME like '%'||#{indexName}||'%'
+		</if>
+		<if test="element!=null and element!=''">
+		 and ELEMENT like '%'||#{element}||'%'
+		</if>
+		<if test="admissionDateTimeStart!=null and admissionDateTimeEnd!=null and admissionDateTimeEnd!='' and admissionDateTimeStart!=''">
+			 and trunc(ADMISSION_DATE_TIME) between trunc(to_date(#{admissionDateTimeStart},'yyyy/MM/dd')) and  trunc(to_date(#{admissionDateTimeEnd},'yyyy/MM/dd'))
+	    </if>
+	    <if test="dischargeDateTimeStart!=null and dischargeDateTimeEnd!=null and dischargeDateTimeStart!='' and dischargeDateTimeEnd!=''">
+			 and trunc(ADMISSION_DATE_TIME) between trunc(to_date(#{dischargeDateTimeStart},'yyyy/MM/dd')) and  trunc(to_date(#{dischargeDateTimeEnd},'yyyy/MM/dd'))
+	    </if>
+	    <if test="operator!=null and operator!=''">
+			 and operator like '%'||#{operator}||'%'
+		</if>
+		<if test="patientId!=null and patientId!=''">
+		 and patient_id =#{patientId}
+		</if>
+		<if test="visitId!=null and visitId!=''">
+		 and visitId =#{visitId}
+		</if>
+		<if test="name!=null and name!=''">
+			 and name like '%'||#{name}||'%'
+		</if>
+		 <if test="birthPlace!=null and birthPlace!=''">
+			 and birth_Place like '%'||#{birthPlace}||'%'
+		</if>
+		 <if test="identity!=null and identity!=''">
+			 and identity like '%'||#{identity}||'%'
+		</if>
+		 <if test="chargeType!=null and chargeType!=''">
+			 and charge_type like '%'||#{chargeType}||'%'
+		</if>
+		 <if test="operationCode!=null and operationCode!=''">
+			 and operation_code like '%'||#{operationCode}||'%'
+		</if>
+		 <if test="operationDesc!=null and operationDesc!=''">
+			 and operation_Desc like '%'||#{operationDesc}||'%'
+		</if>
+		<if test="chiefDoctor!=null and chiefDoctor!=''">
+			 and chief_doctor like '%'||#{chiefDoctor}||'%'
+		</if>
+		 <if test="anaesthesiaMethod!=null and anaesthesiaMethod!=''">
+			 and anaesthesia_method like '%'||#{anaesthesiaMethod}||'%'
+		</if>
+		<if test="opeStartTimeStart!=null and opeStartTimeEnd!=null and opeStartTimeStart!='' and opeStartTimeEnd!=''">
+			 and trunc(OPE_START_TIME) between trunc(to_date(#{opeStartTimeStart},'yyyy/MM/dd')) and  trunc(to_date(#{opeStartTimeEnd},'yyyy/MM/dd'))
+	    </if>
+	    <if test="opeEndTimeStart!=null and opeEndTimeEnd!=null and opeEndTimeStart!='' and opeEndTimeEnd!=''">
+			 and trunc(OPE_END_TIME) between trunc(to_date(#{opeEndTimeStart},'yyyy/MM/dd')) and  trunc(to_date(#{opeEndTimeEnd},'yyyy/MM/dd'))
+	    </if>
+	    <if test="opeartingDateStart!=null and opeartingDateEnd!=null and opeartingDateStart!='' and opeartingDateEnd!=''">
+			 and trunc(OPERATING_DATE) between trunc(to_date(#{opeartingDateStart},'yyyy/MM/dd')) and  trunc(to_date(#{opeartingDateEnd},'yyyy/MM/dd'))
+	    </if>
+	    <if test="sdate!=null and edate!=null and sdate!='' and edate!=''" >
+			 and trunc(DATA_DATE) between trunc(to_date(#{sdate},'yyyy/MM/dd')) and  trunc(to_date(#{edate},'yyyy/MM/dd'))
+	    </if>
+	     <if test="dataDateStart!=null and dataDateEnd!=null and dataDateStart!='' and dataDateEnd!=''" >
+			 and trunc(DATA_DATE) between trunc(to_date(#{dataDateStart},'yyyy/MM/dd')) and  trunc(to_date(#{dataDateEnd},'yyyy/MM/dd'))
+	    </if>
+	</sql>
+	<select id="getIndexByElementName" resultType="com.jeeplus.modules.stand.ope.indexform.entity.IndexForm" parameterType="string">
+			select    
+			    a.id AS "id",
+				a.create_by AS "createBy.id",
+				a.create_date AS "createDate",
+				a.update_by AS "updateBy.id",
+				a.update_date AS "updateDate",
+				a.del_flag AS "delFlag",
+				a.element AS "element",
+				a.index_name AS "indexName",
+				a.index_cal_method AS "indexCalMethod",
+				a.cal_factor_one AS "calFactorOne",
+				a.cal_factor_two AS "calFactorTwo",
+				a.cal_factor_three AS "calFactorThree",
+				a.cal_mode AS "calMode",
+				a.remarks AS "remarks"
+		  from ope_st_index a
+		  where a.element=#{param}
+	</select>
+	<select id="getOpeHorizontalHeadingList" resultType="com.jeeplus.modules.stand.ope.indexform.entity.OpeHorizontalHeading">
+		select distinct column_name columnName, column_comment columnComment from ope_horizontal_heading
+	</select>
+	<select id="getOpeLongitudinalHeadingList" resultType="com.jeeplus.modules.stand.ope.indexform.entity.OpeLongitudinalHeading" >
+		select distinct column_name columnName, column_comment columnComment from ope_longitudinal_heading
+	</select>
+	<select id="getElementList" resultType="string" parameterType="string">
+	  select 
+	  element
+	  from ope_horizontal_heading
+	  where column_name=#{param}
+  	</select>
+	<select id="getIndexFormDataList" resultType="map" parameterType="map">
+	  select 
+	  ${sqlCaseWhen}
+	  1
+	  from pre_ope_patient_index_rec p left join OPE_DEPT_DICT t on p.dept_code=t.dept_name
+	  where 1=1
+	  <include refid="paramSql"/>
+	  ${sqlGroupBy}
+  	</select>
+  	<select id="getIndexFormDataListByCenter" resultType="map" parameterType="map">
+	  select 
+	  ${sqlCaseWhen}
+	  1
+	  from pre_ope_patient_index_rec p left join OPE_DEPT_DICT t on p.dept_code=t.dept_name
+	  where 1=1 and t.dept_center is not null
+	  <include refid="paramSql"/>
+	  group by t.dept_center
+  	</select>
+  	<select id="getIndexFormDataListByStat" resultType="map" parameterType="map">
+	  select 
+	  ${sqlCaseWhen}
+	  1
+	  from pre_ope_patient_index_rec p left join OPE_DEPT_DICT t on p.dept_code=t.dept_name
+	  where 1=1 and t.dept_stat is not null
+	  <include refid="paramSql"/>
+	  group by t.dept_stat
+  	</select>
+  	<select id="getAllCount" resultType="int" parameterType="map">
+	  select 
+	  count(1)
+	  from pre_ope_patient_index_rec
+	  where 1=1
+	  <include refid="paramSql"/>
+  	</select>
+  	<select id="getNqCount" resultType="int" parameterType="map">
+	  select 
+	  count(1)
+	  from pre_ope_patient_index_rec
+	  where 1=1
+	  and IS_QUALIFIED=0
+	  <include refid="paramSql"/>
+  	</select>
+  	<select id="getStandContent" resultType="string" parameterType="map">
+  	select t.stand_content from OPE_QC_STAND_CONFIG t 
+  	where instr((','||t.indexs_id||','),','||#{indexId}||',')>0
+  	
+  	</select>
+  	<select id="getDeptListByStat" resultType="string" parameterType="string">
+  		select t.dept_name from OPE_DEPT_DICT t where t.dept_stat=#{StatName}
+  	</select>
+</mapper>

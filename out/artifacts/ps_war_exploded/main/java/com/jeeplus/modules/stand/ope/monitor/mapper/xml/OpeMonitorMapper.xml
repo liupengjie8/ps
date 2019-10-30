@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jeeplus.modules.stand.ope.monitor.mapper.OpeMonitorMapper">
+	 <!--条件sql-->
+    <sql id="paramSql">
+		<if test="indexName!=null and indexName!=''">
+		 and INDEX_NAME like '%'||#{indexName}||'%'
+		</if>
+		<if test="element!=null and element!=''">
+		 and ELEMENT like '%'||#{element}||'%'
+		</if>
+		<if test="admissionDateTimeStart!=null and admissionDateTimeEnd!=null and admissionDateTimeEnd!='' and admissionDateTimeStart!=''">
+			 and trunc(ADMISSION_DATE_TIME) between trunc(to_date(#{admissionDateTimeStart},'yyyy/MM/dd')) and  trunc(to_date(#{admissionDateTimeEnd},'yyyy/MM/dd'))
+	    </if>
+	    <if test="dischargeDateTimeStart!=null and dischargeDateTimeEnd!=null and dischargeDateTimeStart!='' and dischargeDateTimeEnd!=''">
+			 and trunc(ADMISSION_DATE_TIME) between trunc(to_date(#{dischargeDateTimeStart},'yyyy/MM/dd')) and  trunc(to_date(#{dischargeDateTimeEnd},'yyyy/MM/dd'))
+	    </if>
+	    <if test="operator!=null and operator!=''">
+			 and operator like '%'||#{operator}||'%'
+		</if>
+		<if test="patientId!=null and patientId!=''">
+		 and patient_id =#{patientId}
+		</if>
+		<if test="visitId!=null and visitId!=''">
+		 and visitId =#{visitId}
+		</if>
+		<if test="name!=null and name!=''">
+			 and name like '%'||#{name}||'%'
+		</if>
+		 <if test="birthPlace!=null and birthPlace!=''">
+			 and birth_Place like '%'||#{birthPlace}||'%'
+		</if>
+		 <if test="identity!=null and identity!=''">
+			 and identity like '%'||#{identity}||'%'
+		</if>
+		 <if test="chargeType!=null and chargeType!=''">
+			 and charge_type like '%'||#{chargeType}||'%'
+		</if>
+		 <if test="operationCode!=null and operationCode!=''">
+			 and operation_code like '%'||#{operationCode}||'%'
+		</if>
+		 <if test="operationDesc!=null and operationDesc!=''">
+			 and operation_Desc like '%'||#{operationDesc}||'%'
+		</if>
+		<if test="chiefDoctor!=null and chiefDoctor!=''">
+			 and chief_doctor like '%'||#{chiefDoctor}||'%'
+		</if>
+		 <if test="anaesthesiaMethod!=null and anaesthesiaMethod!=''">
+			 and anaesthesia_method like '%'||#{anaesthesiaMethod}||'%'
+		</if>
+		<if test="opeStartTimeStart!=null and opeStartTimeEnd!=null and opeStartTimeStart!='' and opeStartTimeEnd!=''">
+			 and trunc(OPE_START_TIME) between trunc(to_date(#{opeStartTimeStart},'yyyy/MM/dd')) and  trunc(to_date(#{opeStartTimeEnd},'yyyy/MM/dd'))
+	    </if>
+	    <if test="opeEndTimeStart!=null and opeEndTimeEnd!=null and opeEndTimeStart!='' and opeEndTimeEnd!=''">
+			 and trunc(OPE_END_TIME) between trunc(to_date(#{opeEndTimeStart},'yyyy/MM/dd')) and  trunc(to_date(#{opeEndTimeEnd},'yyyy/MM/dd'))
+	    </if>
+	    <if test="opeartingDateStart!=null and opeartingDateEnd!=null and opeartingDateStart!='' and opeartingDateEnd!=''">
+			 and trunc(OPERATING_DATE) between trunc(to_date(#{opeartingDateStart},'yyyy/MM/dd')) and  trunc(to_date(#{opeartingDateEnd},'yyyy/MM/dd'))
+	    </if>
+	    <if test="sdate!=null and edate!=null and sdate!='' and edate!=''" >
+			 and trunc(DATA_DATE) between trunc(to_date(#{sdate},'yyyy/MM/dd')) and  trunc(to_date(#{edate},'yyyy/MM/dd'))
+	    </if>
+	    <if test="dataDateStart!=null and dataDateEnd!=null and dataDateStart!='' and dataDateEnd!=''" >
+			 and trunc(DATA_DATE) between trunc(to_date(#{dataDateStart},'yyyy/MM/dd')) and  trunc(to_date(#{dataDateEnd},'yyyy/MM/dd'))
+	    </if>
+	</sql>
+	<select id="getNodesBySegment" resultType="com.jeeplus.modules.stand.ope.monitor.entity.OpeMonitor" parameterType="string">
+		select  node,max(sort_id) ss
+		  from OPE_QC_STAND_CONFIG t
+		 where t.segment = #{param}
+		 group by node
+		 order by ss
+	</select>
+	<select id="getIndexIdByNode" resultType="string" parameterType="string">
+		select indexs_id 
+  		from OPE_QC_STAND_CONFIG t
+ 		where t.node = #{param}
+	</select>
+	<select id="getElementNameByIndexId" resultType="string" parameterType="string">
+		select element from OPE_ST_INDEX t where id = #{param}
+	</select>
+	<select id="getAllCountByIndexId" resultType="int" parameterType="com.jeeplus.modules.stand.ope.opebarchart.entity.OpeAllColumn">
+		select count(1) from PRE_OPE_PATIENT_INDEX_REC t where t.index_id=#{indexId}
+		<include refid="paramSql"/>
+	</select>
+</mapper>
