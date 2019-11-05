@@ -107,7 +107,7 @@
 
 
     <build>
-        <finalName>jeeplus</finalName>
+        <finalName>ps</finalName>
         <resources>
 			<resource>
 				<directory>src/main/java</directory>

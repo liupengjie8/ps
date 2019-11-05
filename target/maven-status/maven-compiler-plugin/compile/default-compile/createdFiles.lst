@@ -431,6 +431,7 @@ com\jeeplus\common\utils\text\HashUtil.class
 com\jeeplus\modules\iim\service\MailBoxService.class
 com\jeeplus\common\utils\base\PropertiesUtil.class
 com\jeeplus\common\utils\concurrent\jsr166e\ConcurrentHashMapV8$MapEntry.class
+com\jeeplus\modules\stand\ope\indexform\web\QuickOperationWeekReportExcelUtil.class
 com\jeeplus\common\utils\concurrent\jsr166e\ConcurrentHashMapV8$MapReduceEntriesToIntTask.class
 com\jeeplus\modules\stand\ope\opeparameters\web\OpeParamatersController.class
 net\oschina\j2cache\util\FSTSerializer.class

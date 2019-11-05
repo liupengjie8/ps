@@ -343,12 +343,18 @@
             });
         }
 		function exportTables(){
+            var indexName = $("#selectIndex").find("option:selected").text();
+            var hbmName = $("#hbm").find("option:selected").text();
+            var zbmName = $("#zbm").find("option:selected").text();
+            var index = $("#selectIndex").val();
+            var hbm = $("#hbm").val();
+            var zbm = $("#zbm").val();
 			var searchParam = $("#searchForm").serializeJSON();
-			var values = "";
+			var values = "indexName="+indexName+"&hbmName="+hbmName+"&zbmName="+zbmName+"&";
 			for(var key in searchParam){
 				values = values + key + "=" + searchParam[key] + "&";
 			}
-			jp.downloadFile('${ctx}/indexForm/indexForm/export?'+values);
+            window.location.href="${ctx}/indexForm/indexForm/export?"+values;
 		}
     </script>
 </head>

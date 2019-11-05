@@ -124,24 +124,13 @@ public class IndexFormController extends BaseController {
     /**
      * 标准模块列表数据
      */
-    @ResponseBody
     @RequiresPermissions("user")
     @RequestMapping(value = "/export")
-    public AjaxJson exportFile(String hbm, String zbm, String indexId, OpeAllColumn c, HttpServletRequest request, HttpServletResponse response) {
-        AjaxJson j = new AjaxJson();
-        try {
-            String fileName = "指标报表" + DateUtils.getDate("yyyyMMddHHmmss") + ".xlsx";
-            ArrayList<HashMap<String,Object>> list=(ArrayList<HashMap<String,Object>>)indexFormService.getIndexFormData(hbm, zbm, indexId, c).get("btList");
-            String[] titleArray=new String[list.size()];
-            titleArray= list.toArray(titleArray);
-            new ExportExcel("指标报表",titleArray).setDataList((List)indexFormService.getIndexFormData(hbm, zbm, indexId, c).get("dataList")).write(response, fileName).dispose();
-            j.setSuccess(true);
-            j.setMsg("导出成功！");
-            return j;
-        } catch (Exception e) {
-            j.setSuccess(false);
-            j.setMsg("导出术前明细记录失败！失败信息：" + e.getMessage());
-        }
-        return j;
+    public AjaxJson exportFile(String hbm, String zbm, String indexId, OpeAllColumn c, HttpServletRequest request, HttpServletResponse response, String hbmName,String zbmName,String indexName) throws IOException {
+        String fileName = "指标报表" + DateUtils.getDate("yyyyMMddHHmmss") + ".xlsx";
+        Map<String, Object> map=(Map<String, Object>)indexFormService.getIndexFormData(hbm, zbm, indexId, c);
+        QuickOperationWeekReportExcelUtil  eu=new QuickOperationWeekReportExcelUtil();
+        eu.exportOrderExcel(map, response,fileName,zbm,hbmName,zbmName,indexName);
+        return null;
     }
 }
