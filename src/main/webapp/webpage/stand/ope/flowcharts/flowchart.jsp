@@ -17,7 +17,7 @@
 <body>
 	<div class="wrapper wrapper-content"> 
 	<!-- 栏目1	-->
-		<div class="row">
+		<div class="row" id="selectArea">
 			<div class="col-md-12">
 				<div class="panel panel-primary"> 
 					
@@ -106,6 +106,11 @@
 							src="${ctxStatic}/common/img/flowcharts/btn-left.png" alt=""></a></li>
 					<li id="flow-next"><a href="#"><img
 							src="${ctxStatic}/common/img/flowcharts/btn-right.png" alt=""></a></li>
+							<div class="bars pull-right-selectarea" style="margin-top:0px">
+                                <button class="btn btn-primary" id="showHiddenSelectAreaBtn" title="收起查询区域" onclick="showHiddenSelectArea()">
+                                <i class="glyphicon  glyphicon-upload"></i>
+                                </button>
+                            </div>
 
 				</ul>
 			</div>
@@ -142,6 +147,17 @@
 
 </div>
 	<script>
+	function showHiddenSelectArea(){
+        		if($("#showHiddenSelectAreaBtn").html().indexOf("upload")!=-1){
+        			$("#showHiddenSelectAreaBtn").html('<i class="glyphicon  glyphicon-download"></i>')
+        			$("#selectArea").css("display","none");
+        			$("#showHiddenSelectAreaBtn").attr("title","显示查询区域");
+        		}else{
+        			$("#showHiddenSelectAreaBtn").html('<i class="glyphicon  glyphicon-upload"></i>')
+        			$("#selectArea").css("display","block");
+        			$("#showHiddenSelectAreaBtn").attr("title","收起查询区域");
+        		}
+        	}
 	$(function(){
 		$(".page_title",parent.document).html("手术服务流程监测");
 	})

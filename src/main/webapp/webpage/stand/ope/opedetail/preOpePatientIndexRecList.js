@@ -1,5 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <script>
+	$(function(){
+		$(".page_title",parent.document).html("手术服务个案查询");
+
+		if($("#isQualified").val()=='0'){
+			$("#showAllOrNotQualified").attr("checked",true);
+		}else{
+			$("#showAllOrNotQualified").removeAttr("checked");;
+		}
+	})
 
 $(document).ready(function() {
 	$('#preOpePatientIndexRecTable').bootstrapTable({
@@ -18,7 +27,7 @@ $(document).ready(function() {
                //显示 内容列下拉框
     	       showColumns: true,
     	       //显示到处按钮
-    	       showExport: true,
+    	       showExport: false,
     	       //显示切换分页按钮
     	       showPaginationSwitch: false,
     	       //最低显示2行
@@ -325,7 +334,7 @@ $(document).ready(function() {
 	    	       }
 			}); 
 		});
-		    
+
 		
 	 $("#export").click(function(){//导出Excel文件
 	        var searchParam = $("#searchForm").serializeJSON();

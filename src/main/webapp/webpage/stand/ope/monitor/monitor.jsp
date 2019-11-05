@@ -8,6 +8,17 @@
 	<title>指标管理</title>
 	<meta name="decorator" content="ani">
 	<script type="text/javascript">
+	function showHiddenSelectArea(){
+        		if($("#showHiddenSelectAreaBtn").html().indexOf("upload")!=-1){
+        			$("#showHiddenSelectAreaBtn").html('<i class="glyphicon  glyphicon-download"></i>')
+        			$("#selectArea").css("display","none");
+        			$("#showHiddenSelectAreaBtn").attr("title","显示查询区域");
+        		}else{
+        			$("#showHiddenSelectAreaBtn").html('<i class="glyphicon  glyphicon-upload"></i>')
+        			$("#selectArea").css("display","block");
+        			$("#showHiddenSelectAreaBtn").attr("title","收起查询区域");
+        		}
+        	}
 	$(function(){
 		$(".page_title",parent.document).html("手术服务运行监测");
 	})
@@ -371,7 +382,7 @@
 	</div>
 	    <div role="tabpanel" class="tab-pane" id="monitor_his">
 		<!-- 栏目1	-->
-		<div class="row">
+		<div class="row" id="selectArea">
 			<div class="col-md-12">
 				<div class="panel panel-primary"> 
 					
@@ -460,6 +471,11 @@
 					<!-- 标题	-->
 					<div class="panel-heading">
 						<h3 class="panel-title">术前 </h3>
+						<div class="bars pull-right-selectarea" style="margin-top:-32px">
+                        					<button class="btn btn-primary" id="showHiddenSelectAreaBtn" title="收起查询区域" onclick="showHiddenSelectArea()">
+                        					<i class="glyphicon  glyphicon-upload"></i>
+                        					</button>
+                        				</div>
 					</div>
 					<!-- 标题end	--> 
 					<!--表格内容-->

@@ -10,6 +10,17 @@
 <script src="${ctxStatic}/plugin/highcharts/highcharts.js"></script>
 <script src="${ctxStatic}/plugin/highcharts/drilldown.js"></script>
 <script>
+function showHiddenSelectArea(){
+    		if($("#showHiddenSelectAreaBtn").html().indexOf("upload")!=-1){
+    			$("#showHiddenSelectAreaBtn").html('<i class="glyphicon  glyphicon-download"></i>')
+    			$("#selectArea").css("display","none");
+    			$("#showHiddenSelectAreaBtn").attr("title","显示查询区域");
+    		}else{
+    			$("#showHiddenSelectAreaBtn").html('<i class="glyphicon  glyphicon-upload"></i>')
+    			$("#selectArea").css("display","block");
+    			$("#showHiddenSelectAreaBtn").attr("title","收起查询区域");
+    		}
+    	}
 $(function(){
 	$(".page_title",parent.document).html("手术服务柱状图");
 })
@@ -188,13 +199,14 @@ $(function(){
 	    	    calculable: true,
 	    	    xAxis: [
 	    	        {
+	    	         name:'阶段',
 	    	            type: 'category',
 	    	            axisTick: {show: false},
 	    	            data: xAxisData,
 	    	        }
 	    	    ],
 	    	    yAxis: [
-	    	        {
+	    	        {   name:'不达标例数',
 	    	            type: 'value'
 	    	        }
 	    	    ],
@@ -255,6 +267,7 @@ $(function(){
 	    	    calculable: true,
 	    	    xAxis: [
 	    	        {
+	    	         name:'环节',
 	    	            type: 'category',
 	    	            axisTick: {show: false},
 	    	            data: xAxisData,
@@ -262,6 +275,7 @@ $(function(){
 	    	    ],
 	    	    yAxis: [
 	    	        {
+	    	         name:'不达标例数',
 	    	            type: 'value'
 	    	        }
 	    	    ],
@@ -322,6 +336,7 @@ $(function(){
 	    	    calculable: true,
 	    	    xAxis: [
 	    	        {
+	    	         name:'节点',
 	    	            type: 'category',
 	    	            axisTick: {show: false},
 	    	            data: xAxisData,
@@ -329,6 +344,7 @@ $(function(){
 	    	    ],
 	    	    yAxis: [
 	    	        {
+	    	         name:'不达标例数',
 	    	            type: 'value'
 	    	        }
 	    	    ],
@@ -358,7 +374,7 @@ $(function(){
 	<!--  主体内容	-->
 		<div class="conter-wrapper home-container wrapper-content">
 				<!-- 栏目1	-->
-		<div class="row">
+		<div class="row" id="selectArea">
 			<div class="col-md-12">
 				<div class="panel panel-primary"> 
 					
@@ -440,11 +456,27 @@ $(function(){
 				</div>
 			</div>
 		</div>
+
+		<div class="row home-row">
+
+        				<div class="col-md-12">
+        				<div class="panel panel-primary">
+        				<div class="pull-right-selectarea" style="margin-top:0px">
+                            <button class="btn btn-primary" id="showHiddenSelectAreaBtn" title="收起查询区域" onclick="showHiddenSelectArea()">
+                            <i class="glyphicon  glyphicon-upload"></i>
+                            </button>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
 			<!-- 栏目2	-->
-			
+
 			<div class="row home-row">
+
 				<div class="col-md-12">
+
 					<div class="panel panel-primary">
+
 						<div class="chart-container">
 							<div id="lineChart" style="width: 100%;height: 500px"></div>
 						</div>

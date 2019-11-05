@@ -7,23 +7,23 @@
     'use strict';
 
     var TYPE_NAME = {
-        json: 'JSON',
+        /*json: 'JSON',
         xml: 'XML',
         png: 'PNG',
         csv: 'CSV',
         txt: 'TXT',
         sql: 'SQL',
-        doc: 'MS-Word',
-        excel: 'MS-Excel',
-        powerpoint: 'MS-Powerpoint',
-        pdf: 'PDF'
+        doc: 'MS-Word',*/
+        excel: '导出Excel',
+       /* powerpoint: 'MS-Powerpoint',
+        pdf: 'PDF'*/
     };
 
     $.extend($.fn.bootstrapTable.defaults, {
         showExport: false,
         exportDataType: 'basic', // basic, all, selected
         // 'json', 'xml', 'png', 'csv', 'txt', 'sql', 'doc', 'excel', 'powerpoint', 'pdf'
-        exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel'],
+        exportTypes: ['excel'],
         exportOptions: {}
     });
 

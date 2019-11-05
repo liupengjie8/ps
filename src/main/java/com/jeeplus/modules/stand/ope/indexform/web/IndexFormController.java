@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jeeplus.common.utils.*;
 
+import com.jeeplus.common.utils.excel.ExportExcel;
+import com.jeeplus.modules.stand.ope.preopedetail.entity.PreOpePatientIndexRec;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -60,61 +62,86 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 运行监测Controller
+ *
  * @author lpj
  * @version 2016-5-31
  */
 @Api(value = "IndexFormController", description = "指标表单")
 @RequestMapping(value = "${adminPath}/indexForm/indexForm")
 @Controller
-public class IndexFormController extends BaseController{
-	
-	@Autowired
-	private OpeStandModularService modularService;
-	
-	
-	@Autowired
-	private OpeMonitorService monitorService;
-	
-	@Autowired
-	private IndexFormService indexFormService;
-	
-	@Autowired
-	private OpeQcStandConfigService configService;
-	
-	/**
-	 * 进入监测页
-	 */
-	@RequiresPermissions("user")
-	@RequestMapping(value = "/indexForm")
-	public String monitor(HttpServletRequest request,String fromPage,String nodeName,String element, HttpServletResponse response) {
-		//指标列表
-		List<OpeStIndex> indexList = new ArrayList<OpeStIndex>();
-		
-		if("leftTree".equals(fromPage)){//点击左侧树进入页面 此时，传入的参数应该是某个节点
-			indexList=indexFormService.getIndexByNodeName(nodeName);
-		}else if("monitor".equals(fromPage)){//监测页面进入，传入的参数是要素
-			indexList=indexFormService.getIndexByElementName(element);
-		}else{
-			indexList=indexFormService.getAllIndex();
-		}
-		//横标目列表
-		List<OpeHorizontalHeading> opeHorizontalHeadingList = indexFormService.getOpeHorizontalHeadingList();
-		//纵标目列表
-		List<OpeLongitudinalHeading> opeLongitudinalHeadingList = indexFormService.getOpeLongitudinalHeadingList();
-		request.setAttribute("indexList", indexList);
-		request.setAttribute("opeHorizontalHeadingList", opeHorizontalHeadingList);
-		request.setAttribute("opeLongitudinalHeadingList", opeLongitudinalHeadingList);
-		request.setAttribute("nodeList", configService.getNodeList());
-		return "stand/ope/indexform/indexform";
-	}
-	/**
-	 * 标准模块列表数据
-	 */
-	@ResponseBody
-	@RequiresPermissions("user")
-	@RequestMapping(value = "/indexFormData")
-	public Map<String, Object> data(String hbm,String zbm,String indexId,OpeAllColumn c, HttpServletRequest request, HttpServletResponse response, Model model) {
-		return indexFormService.getIndexFormData(hbm,zbm,indexId,c);
-	}
+public class IndexFormController extends BaseController {
 
+    @Autowired
+    private OpeStandModularService modularService;
+
+
+    @Autowired
+    private OpeMonitorService monitorService;
+
+    @Autowired
+    private IndexFormService indexFormService;
+
+    @Autowired
+    private OpeQcStandConfigService configService;
+
+    /**
+     * 进入监测页
+     */
+    @RequiresPermissions("user")
+    @RequestMapping(value = "/indexForm")
+    public String monitor(HttpServletRequest request, String fromPage, String nodeName, String element, HttpServletResponse response) {
+        //指标列表
+        List<OpeStIndex> indexList = new ArrayList<OpeStIndex>();
+
+        if ("leftTree".equals(fromPage)) {//点击左侧树进入页面 此时，传入的参数应该是某个节点
+            indexList = indexFormService.getIndexByNodeName(nodeName);
+        } else if ("monitor".equals(fromPage)) {//监测页面进入，传入的参数是要素
+            indexList = indexFormService.getIndexByElementName(element);
+        } else {
+            indexList = indexFormService.getAllIndex();
+        }
+        //横标目列表
+        List<OpeHorizontalHeading> opeHorizontalHeadingList = indexFormService.getOpeHorizontalHeadingList();
+        //纵标目列表
+        List<OpeLongitudinalHeading> opeLongitudinalHeadingList = indexFormService.getOpeLongitudinalHeadingList();
+        request.setAttribute("indexList", indexList);
+        request.setAttribute("opeHorizontalHeadingList", opeHorizontalHeadingList);
+        request.setAttribute("opeLongitudinalHeadingList", opeLongitudinalHeadingList);
+        request.setAttribute("nodeList", configService.getNodeList());
+        return "stand/ope/indexform/indexform";
+    }
+
+    /**
+     * 标准模块列表数据
+     */
+    @ResponseBody
+    @RequiresPermissions("user")
+    @RequestMapping(value = "/indexFormData")
+    public Map<String, Object> data(String hbm, String zbm, String indexId, OpeAllColumn c, HttpServletRequest request, HttpServletResponse response, Model model) {
+        return indexFormService.getIndexFormData(hbm, zbm, indexId, c);
+    }
+
+    /**
+     * 标准模块列表数据
+     */
+    @ResponseBody
+    @RequiresPermissions("user")
+    @RequestMapping(value = "/export")
+    public AjaxJson exportFile(String hbm, String zbm, String indexId, OpeAllColumn c, HttpServletRequest request, HttpServletResponse response) {
+        AjaxJson j = new AjaxJson();
+        try {
+            String fileName = "指标报表" + DateUtils.getDate("yyyyMMddHHmmss") + ".xlsx";
+            ArrayList<HashMap<String,Object>> list=(ArrayList<HashMap<String,Object>>)indexFormService.getIndexFormData(hbm, zbm, indexId, c).get("btList");
+            String[] titleArray=new String[list.size()];
+            titleArray= list.toArray(titleArray);
+            new ExportExcel("指标报表",titleArray).setDataList((List)indexFormService.getIndexFormData(hbm, zbm, indexId, c).get("dataList")).write(response, fileName).dispose();
+            j.setSuccess(true);
+            j.setMsg("导出成功！");
+            return j;
+        } catch (Exception e) {
+            j.setSuccess(false);
+            j.setMsg("导出术前明细记录失败！失败信息：" + e.getMessage());
+        }
+        return j;
+    }
 }
