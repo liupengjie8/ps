@@ -31,9 +31,19 @@ public class PreOpePatientIndexRecService extends CrudService<PreOpePatientIndex
 	}
 	
 	public Page<PreOpePatientIndexRec> findPage(Page<PreOpePatientIndexRec> page, PreOpePatientIndexRec preOpePatientIndexRec) {
+		if(preOpePatientIndexRec.getChartId()!=null&&!"".equals(preOpePatientIndexRec.getChartId())){
+			List<String> indexIds = mapper.getIndexIdsByChartId(preOpePatientIndexRec.getChartId());
+			String ids="";
+			if(indexIds!=null) {
+				for (String s : indexIds) {
+					ids += s + ",";
+				}
+			}
+			preOpePatientIndexRec.setIndexIdArray(ids.split(","));
+		}
 		return super.findPage(page, preOpePatientIndexRec);
 	}
-	
+
 	@Transactional(readOnly = false)
 	public void save(PreOpePatientIndexRec preOpePatientIndexRec) {
 		super.save(preOpePatientIndexRec);

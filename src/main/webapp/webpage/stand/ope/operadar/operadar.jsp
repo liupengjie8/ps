@@ -183,7 +183,7 @@
     		    dataType: "json",
     		    success: function(result){
     		    	var dataset=[];
-    		    	console.log(result.preOpeRadarData);
+    		    	console.log("111:"+JSON.stringify(result.preOpeRadarData));
     		    	dataset.push(result.preOpeRadarData);
     		    	renderChart('#svg', dataset, {
     		            // 分级算法, value -> level, 由低到高
@@ -202,7 +202,7 @@
     		            },
     		            // 格式化提示信息
     		            formatTip: function(d, index) {
-    		                const years = ['上一年', '今年']
+    		                const years = ['去年', '今年']
     		                return years[index] + '(' + d.title + '):' + (d.value*100).toFixed(2)+'%'
     		            }
     		        })

@@ -38,7 +38,7 @@
 					<li id="m1"><a href="/ps/a/ope">首页</a></li>
 					<li id="m2" class="active"><a href="/ps/a/monitor/monitor/monitor" target="iframe0">运行监测</a></li>
 					<li id="m3"><a  href="/ps/a/unaccomplished/unaccomplished/unaccomplished" target="iframe0">监测报告</a></li>
-					<li id="m4"><a href="patientDetail" target="iframe1">个案查询</a></li>
+					<li id="m4"><a href="patientDetail">个案查询</a></li>
 					<li id="m5"><a  href="/ps/a/unaccomplished/unaccomplished/unaccomplished" target="iframe0">运行报告</a></li>
 					<li id="m6"><a href="systemControl">系统设置</a></li>
 				</ul>

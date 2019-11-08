@@ -80,7 +80,13 @@ public class OpeRadarService{
 			or.setTitle(s.getIndexName());
 			param.setIndexId(s.getId());
 			//根据指标id获取合格率
-			Double[] value = {Double.parseDouble(mapper.getIndexQualifiedRate(param)),Double.parseDouble(mapper.getIndexQualifiedRateLastYear(param))};
+			Double rate1 = Double.parseDouble(mapper.getIndexQualifiedRate(param));
+			if(param.getDataDateStart()!=null&&param.getDataDateEnd()!=null&&!"".equals(param.getDataDateEnd())&&!"".equals(param.getDataDateStart())){
+				param.setDataDateStart((Integer.parseInt(param.getDataDateStart().substring(0,4))-1)+param.getDataDateStart().substring(4));
+				param.setDataDateEnd((Integer.parseInt(param.getDataDateEnd().substring(0,4))-1)+param.getDataDateEnd().substring(4));
+			}
+			Double rate2 = Double.parseDouble(mapper.getIndexQualifiedRateLastYear(param));
+			Double[] value = {rate1,rate2};
 			or.setValue(value);
 			preOpeRadarData.add(or);
 		}

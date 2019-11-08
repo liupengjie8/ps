@@ -309,7 +309,7 @@
                     var tr_content = '<tr><td class="td1">' + $("#zbm").find("option:selected").text() + '</td>';
                     for (j = 0, len = btList.length; j < len; j++) {
                         tr_content += '<td class="td1" style="border-right: none;" >人次</td>'
-                        tr_content += '<td class="td1" style="border-right: none;" >未完成人次</td>'
+                        tr_content += '<td class="td1" style="border-right: none;" >不达标人次</td>'
                         tr_content += '<td class="td1">' + index_suffix + '</td>'
                     }
                     tr_content += '</tr>';

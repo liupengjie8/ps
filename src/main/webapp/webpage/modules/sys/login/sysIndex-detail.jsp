@@ -36,7 +36,7 @@
 			<div class="nav_list">
 				<ul>
 					<li id="m1"><a href="/ps/a/ope">首页</a></li>
-					<li id="m2" ><a href="systemManage" target="iframe1">运行监测</a></li>
+					<li id="m2" ><a href="systemManage">运行监测</a></li>
 					<li id="m3"><a href="/ps/a/unaccomplished/unaccomplished/unaccomplished" target="iframe0">监测报告</a></li>
 					<li id="m4" class="active"><a href="/ps/a/opedetail/opeDetail/opeDetail" target="iframe0">个案查询</a></li>
 					<li id="m5"><a href="/ps/a/unaccomplished/unaccomplished/unaccomplished" target="iframe0">运行报告</a></li>
@@ -88,7 +88,7 @@
 			
 			</div>
 			<div class="title_box ">
-				<h2  > 手术服务标准运行监测预警</h2>
+				<h2  > 手术服务个案监测</h2>
 				<div class="ico_list">
 					<ul>
 					<%--	<a href='/ps/a/flowchart/flowChart/flowChart' target="iframe0" title="流程图"><li class="ico"></li></a>

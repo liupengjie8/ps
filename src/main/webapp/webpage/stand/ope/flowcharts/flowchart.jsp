@@ -378,6 +378,7 @@
             			
             		}else{
             			chartId=node.chartId;
+            			console.log("chartId："+chartId)
             			window.location.href="/ps/a/opedetail/opeDetail/opeDetail?isQualified=0&chartId="+chartId;
             		}
             	},

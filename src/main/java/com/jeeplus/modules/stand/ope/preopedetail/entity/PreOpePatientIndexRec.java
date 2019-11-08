@@ -59,7 +59,16 @@ public class PreOpePatientIndexRec extends DataEntity<PreOpePatientIndexRec> {
     private String segment;
     private String stage;
     private String node;
-	
+    private String chartId;
+
+	public String getChartId() {
+		return chartId;
+	}
+
+	public void setChartId(String chartId) {
+		this.chartId = chartId;
+	}
+
 	public String getIndexIds() {
 		return indexIds;
 	}
