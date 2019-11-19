@@ -1,157 +1,276 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ include file="/webpage/include/taglib.jsp"%>
+<%@ include file="/webpage/include/bootstraptable.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
+<meta charset="utf-8" content="ani"/>
 <title>医疗质量安全标准运行监测系统</title>
-<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<link rel="stylesheet" type="text/css" href="${ctxStatic}/common/css/app-gradereview.css"/>
-<link rel="stylesheet" href="${ctxStatic}/common/css/skill-bar/an-skill-bar.css">
-<link rel="stylesheet" href="${ctxStatic}/common/css/skill-bar/main.css">
-<script src="${ctxStatic}/common/js/jquery-1.7.2.min.js"></script>
-	<script src="${ctxStatic}/common/js/skill-bar/an-skill-bar.js"></script>
-	<script src="${ctxStatic}/common/js/skill-bar/main.js"></script>
-	<script src="${ctxStatic}/plugin/highcharts/highcharts.js"></script>
-	<script src="${ctxStatic}/plugin/highcharts/highcharts-more.js"></script>
 
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<!-- 引入jeeplus ajax版本库文件，该文件压缩了jQuery，datatime等常用js文件以提高加载速度 -->
+	<link rel="stylesheet" href="${ctxStatic}/common/css/vendor.css" />
+	<script src="${ctxStatic}/common/js/vendor.js"></script>
+	<!-- 引入依赖的第三方插件 -->
+
+<link rel="stylesheet" type="text/css" href="${ctxStatic}/common/css/app-gradereview.css"/>
+<script src="${ctxStatic}/common/js/jquery-1.7.2.min.js"></script>
 </head>
 <body>
 <div class="wrap">
-	<%--//上方div--%>
-	<div><h2 style="display:inline-block">&nbsp;&nbsp;&nbsp;&nbsp;XX医院</h2><span style="float: right;margin-top: 23px;margin-right: 20px"><h4 ><a href="/ps/a/logout">安全退出</a></h4></span></div>
-	<div class="row" >
-		<div class="col-md-12">
-			<div class="panel panel-primary">
-				<div class="panel-body"  style="height:170px">
-					<div class="row" style="float:none">
-						<div class="col-md-9">
-						应用标准：等级医院标准实施细则（2018通用版）
-							<button class="btn btn-primary">切换标准</button>
-
-						</div>
-						<div class="col-md-3" style="float:right">
-							最新评估周期：2019/5/4~2019/5/31
-						</div>
-					</div>
-					<div class="row" style="float:none">
-						<div class="col-md-3" style="">
-							<div class="form-group">
-								<div class="col-md-12" >
-									<h4 class="text-rate" style="text-align: center">三级甲等-C级</h4>
-									D不合格 &nbsp;&nbsp;&nbsp;&nbsp;C合格&nbsp;&nbsp;&nbsp; B良好&nbsp;&nbsp;&nbsp; A优秀
-									<div id="skill">
-										<div class="skillbar css">
-											<div class="filled" data-width="30%"></div>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</div>
-						<div class="col-md-8" style="text-align: center;float: right">
-						<div class="col-xs-1-5">
-								<div class="col-md-12">
-									<h4 class="text-rate">442条</h4>
-									<h4 class="text-rate">&nbsp;</h4>
-									<h3 class="text-rate">标准总量</h3>
-								</div>
-						</div>
-							<div class="col-xs-1-5">
-								<div class="col-md-12">
-									<h4 class="text-rate">92%</h4>
-									<h4 class="text-rate" style="color: #428003">+2%</h4>
-									<h3 class="text-rate">C级达标率</h3>
-								</div>
-							</div>
-							<div class="col-xs-1-5">
-								<div class="col-md-12">
-									<h4 class="text-rate">56%</h4>
-									<h4 class="text-rate" style="color: red">-4%</h4>
-									<h3 class="text-rate">B级达标率</h3>
-								</div>
-							</div>
-							<div class="col-xs-1-5">
-								<div class="col-md-12">
-									<h4 class="text-rate">18%</h4>
-									<h4 class="text-rate" style="color: red">-7%</h4>
-									<h3 class="text-rate">A级达标率</h3>
-								</div>
-							</div><div class="col-xs-1-5">
-							<div class="col-md-12">
-								<h4 class="text-rate">3条</h4>
-								<h4 class="text-rate">&nbsp;</h4>
-								<h3 class="text-rate">不适用条款</h3>
-							</div>
-						</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<%--//中间div--%>
+	<div><h2 style="display:inline-block">&nbsp;&nbsp;&nbsp;&nbsp;管理任务</h2><span style="float: right;margin-top: 23px;margin-right: 20px"><h4 ><a href="/ps/a/logout">安全退出</a></h4></span></div>
 	<div class="row">
 		<div class="col-md-12" style="width:30%;">
 			<div class="panel panel-primary">
+				<div class="panel-heading" >
+					<div class="row" style="float:none">
+					<div class="col-md-9">
+						<h4>检查任务</h4>
+					</div>
+					<div class="col-md-3">
+						<button class="btn btn-primary">创建任务</button>
+					</div>
+					</div>
+				</div>
 				<!--表格内容-->
-				<div class="panel-body" style="height:270px">
-					<span></span><h4><img height="20" width="10" src="${ctxStatic}/common/img/sekuai.png"/>综合评价</h4></span>
-					<div id="chartDiv" style="height:90%;width: 100%"></div>
+				<div class="panel-body" style="height: 1323px">
+					<table id="midTable"  style="border-collapse:separate; border-spacing:0px 8px;">
+						<tr><td class="tdTest"><input type="radio">2019/05/20日检查任务 9/12</td><td class="td110"><a>编辑 删除</a></td></tr>
+						<tr><td class="tdTest"><input type="radio">2019/05/20日检查任务 9/12</td><td class="td110"><a>编辑 删除</a></td></tr>
+						<tr><td class="tdTest"><input type="radio">2019/05/20日检查任务 9/12</td><td class="td110"><a>编辑 删除</a></td></tr>
+						<tr><td class="tdTest"><input type="radio">2019/05/20日检查任务 9/12</td><td class="td110"><a>编辑 删除</a></td></tr>
+						<tr><td class="tdTest"><input type="radio">2019/05/20日检查任务 9/12</td><td class="td110"><a>编辑 删除</a></td></tr>
+						<tr><td class="tdTest"><input type="radio">2019/05/20日检查任务 9/12</td><td class="td110"><a>编辑 删除</a></td></tr>
+						<tr><td class="tdTest"><input type="radio">2019/05/20日检查任务 9/12</td><td class="td110"><a>编辑 删除</a></td></tr>
+						<tr><td class="tdTest"><input type="radio">2019/05/20日检查任务 9/12</td><td class="td110"><a>编辑 删除</a></td></tr>
+						<tr><td class="tdTest"><input type="radio">2019/05/20日检查任务 9/12</td><td class="td110"><a>编辑 删除</a></td></tr>
+						<tr><td class="tdTest"><input type="radio">2019/05/20日检查任务 9/12</td><td class="td110"><a>编辑 删除</a></td></tr>
+						<tr><td class="tdTest"><input type="radio">2019/05/20日检查任务 9/12</td><td class="td110"><a>编辑 删除</a></td></tr>
+						<tr><td class="tdTest"><input type="radio">2019/05/20日检查任务 9/12</td><td class="td110"><a>编辑 删除</a></td></tr>
+					</table>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-12" style="width:70%;">
 			<div class="panel panel-primary">
-				<!--表格内容-->
-				<div class="panel-body" style="height:270px">
-					<span><h4><img height="20" width="10" src="${ctxStatic}/common/img/sekuai.png"/>运营流程</h4></span>
-					<table id="midTable"  cellpadding="20px" cellspacing="20px" style="border-collapse:separate; border-spacing:0px 8px;">
-						<tr><td>业务流程：</td><td>2122个</td></tr>
-						<tr></tr>
-						<tr><td class="tdTest">未落实到人的流程：</td><td>24个</td><td class="tdTest">没进流程的岗位：</td><td>0个</td><td class="tdTest">形成持续改进的流程：</td><td>24个</td></tr>
-						<tr><td class="tdTest">已与HIS打通流程：</td><td>321个</td><td class="tdTest">没有SOP的流程：</td><td>321个</td><td class="tdTest">没有制度的流程：</td><td>24个</td></tr>
-						<tr></tr>
-						<tr><td class="tdTest">持续改进：</td><td>232次</td></tr>
-						<tr></tr>
-						<tr></tr>
-						<tr><td class="tdTest">医院功能与任务：</td><td>24个</td><td class="tdTest"> 医疗质量安全持续改进：</td><td>24个</td><td class="tdTest">患者安全：</td><td>24个</td></tr>
-						<tr><td class="tdTest">医院服务：</td><td>24个</td><td class="tdTest">护理管理质量持续改进：</td><td>24个</td><td class="tdTest">医院管理：</td><td>24个</td></tr>
-					</table>
+				<div class="panel-heading" >
+					<div class="row" style="float:none">
+						<div class="col-md-9">
+							<h4>任务分工</h4>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-	</div>
-	<%--//下方div--%>
-	<div class="row" >
-		<div class="col-md-12" style="width:70%;">
-			<div class="panel panel-primary">
 				<!--表格内容-->
-				<div class="panel-body" style="height:200px">
-					<span><h4><img height="20" width="10" src="${ctxStatic}/common/img/sekuai.png"/>流程运营异常预警</h4></span>
-					<table id="midTable"  cellpadding="20px" cellspacing="20px" style="border-collapse:separate; border-spacing:0px 8px;">
-						<tr><td class="tdShort">1</td><td class="tdLong">管理体系-急诊服务流程-办理入院手续办理效率较低，2小时/患者，低于地区标准水平</td><td><a>查看</a></td></tr>
-						<tr><td class="tdShort">2</td><td class="tdLong">管理体系-急诊服务流程-办理入院手续办理效率较低，2小时/患者，低于地区标准水平</td><td><a>查看</a></td></tr>
-						<tr><td class="tdShort">2</td><td class="tdLong">管理体系-急诊服务流程-办理入院手续办理效率较低，2小时/患者，低于地区标准水平</td><td><a>查看</a></td></tr>
-					</table>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-12" style="width:30%;">
-			<div class="panel panel-primary">
-				<!--表格内容-->
-				<div class="panel-body" style="height:200px">
-					<span><h4><img height="20" width="10" src="${ctxStatic}/common/img/sekuai.png"/>异常指标预警</h4></span>
-					<table id="midTable"  cellpadding="20px" cellspacing="20px" style="border-collapse:separate; border-spacing:0px 8px;">
-						<tr><td class="tdLong">住院患者当天出院再住院率 高于3%</td><td><a>查看</a></td></tr>
-						<tr><td class="tdLong">住院患者当天出院再住院率 高于3%</td><td><a>查看</a></td></tr>
-						<tr><td class="tdLong">住院患者当天出院再住院率 高于3%</td><td><a>查看</a></td></tr>
-					</table>
-				</div>
-			</div>
-		</div>
+				<div class="panel-body " >
+					<div class="span6">
+					<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active"><a href="#all" role="tab" data-toggle="tab">全部任务</a></li>
+						<li role="presentation"><a href="#myDistribution" role="tab" data-toggle="tab">我分配的</a></li>
+						<li role="presentation"><a href="#myExecute" role="tab" data-toggle="tab">我执行的</a></li>
+						<li role="presentation"><a href="#statistics" role="tab" data-toggle="tab">统计分析</a></li>
+						<li style="margin-top: 10px"><input type="checkbox"/>只显示人工任务</li>
+						<div class="col-md-3" style="float: right">
+							<button class="btn btn-primary">创建任务</button>
+						</div>
+					</ul>
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="all">
+							<div class="panel panel-primary" style="height: 300px;margin-left: 10px;margin-top: 10px">
+								<div class="panel-body " >
+									<img src="${ctxStatic}/common/img/rengong.png">任务名称：急诊流程质量评审  <span style="background-color: orange;height: 20px">人工任务</span>
+									<table id="midTable"  cellpadding="20px" cellspacing="20px" style="border-collapse:separate; border-spacing:0px 8px;">
+										<tr><td class="tdNormal">起始时间：2019/06/14——2019/07/14</td><td class="tdNormal1">分配人：张小龙（院长）</td></tr>
+										<tr><td class="tdNormal">执行角色：急诊护士长</td><td class="tdNormal1">负责人：刘建设（副院长）</td></tr>
+										<tr><td class="tdNormal">任务描述：评审急诊流程是否完整</td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查要求：1.2保障患者诊疗过程中诊疗服务的连续性。<br>3.2按照病情紧急程度，会诊分为急会诊和普通会诊。机构内急会诊应当<br>在会诊请求发出后10分钟内到位，普通会诊应当在会诊发出后24小时内完成</td><td class="tdNormal1">岳云龙（急诊科主任）</td></tr>
+										<tr><td class="tdNormal"></td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查结果：流程完整，患者满意度高</td><td class="tdNormal1">秦晓晓（急诊科医师）</td></tr>
+									</table>
+								</div>
+							</div>
+							<div class="panel panel-primary" style="height: 300px;margin-left: 10px;margin-top: 10px">
+								<div class="panel-body " >
+									<img src="${ctxStatic}/common/img/rengong.png">任务名称：急诊流程质量评审  <span style="background-color: orange;height: 20px">人工任务</span>
+									<table id="midTable"  cellpadding="20px" cellspacing="20px" style="border-collapse:separate; border-spacing:0px 8px;">
+										<tr><td class="tdNormal">起始时间：2019/06/14——2019/07/14</td><td class="tdNormal1">分配人：张小龙（院长）</td></tr>
+										<tr><td class="tdNormal">执行角色：急诊护士长</td><td class="tdNormal1">负责人：刘建设（副院长）</td></tr>
+										<tr><td class="tdNormal">任务描述：评审急诊流程是否完整</td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查要求：1.2保障患者诊疗过程中诊疗服务的连续性。<br>3.2按照病情紧急程度，会诊分为急会诊和普通会诊。机构内急会诊应当<br>在会诊请求发出后10分钟内到位，普通会诊应当在会诊发出后24小时内完成</td><td class="tdNormal1">岳云龙（急诊科主任）</td></tr>
+										<tr><td class="tdNormal"></td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查结果：流程完整，患者满意度高</td><td class="tdNormal1">秦晓晓（急诊科医师）</td></tr>
+									</table>
+								</div>
+							</div>
+							<div class="panel panel-primary" style="height: 300px;margin-left: 10px;margin-top: 10px">
+								<div class="panel-body " >
+									<img src="${ctxStatic}/common/img/zidong.png">任务名称：急诊流程质量评审  <span style="background-color: green;height: 20px">自动任务</span>
+									<table id="midTable"  cellpadding="20px" cellspacing="20px" style="border-collapse:separate; border-spacing:0px 8px;">
+										<tr><td class="tdNormal">起始时间：2019/06/14——2019/07/14</td><td class="tdNormal1">分配人：张小龙（院长）</td></tr>
+										<tr><td class="tdNormal">执行角色：急诊护士长</td><td class="tdNormal1">负责人：刘建设（副院长）</td></tr>
+										<tr><td class="tdNormal">任务描述：评审急诊流程是否完整</td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查要求：1.2保障患者诊疗过程中诊疗服务的连续性。<br>3.2按照病情紧急程度，会诊分为急会诊和普通会诊。机构内急会诊应当<br>在会诊请求发出后10分钟内到位，普通会诊应当在会诊发出后24小时内完成</td><td class="tdNormal1">岳云龙（急诊科主任）</td></tr>
+										<tr><td class="tdNormal"></td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查结果：流程完整，患者满意度高</td><td class="tdNormal1">秦晓晓（急诊科医师）</td></tr>
+									</table>
+								</div>
+							</div>
+							<div class="panel panel-primary" style="height: 300px;margin-left: 10px;margin-top: 10px">
+								<div class="panel-body " >
+									<img src="${ctxStatic}/common/img/zidong.png">任务名称：急诊流程质量评审  <span style="background-color: green;height: 20px">自动任务</span>
+									<table id="midTable"  cellpadding="20px" cellspacing="20px" style="border-collapse:separate; border-spacing:0px 8px;">
+										<tr><td class="tdNormal">起始时间：2019/06/14——2019/07/14</td><td class="tdNormal1">分配人：张小龙（院长）</td></tr>
+										<tr><td class="tdNormal">执行角色：急诊护士长</td><td class="tdNormal1">负责人：刘建设（副院长）</td></tr>
+										<tr><td class="tdNormal">任务描述：评审急诊流程是否完整</td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查要求：1.2保障患者诊疗过程中诊疗服务的连续性。<br>3.2按照病情紧急程度，会诊分为急会诊和普通会诊。机构内急会诊应当<br>在会诊请求发出后10分钟内到位，普通会诊应当在会诊发出后24小时内完成</td><td class="tdNormal1">岳云龙（急诊科主任）</td></tr>
+										<tr><td class="tdNormal"></td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查结果：流程完整，患者满意度高</td><td class="tdNormal1">秦晓晓（急诊科医师）</td></tr>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div role="tabpane1" class="tab-pane " id="myDistribution">
+							<div class="panel panel-primary" style="height: 300px;margin-left: 10px;margin-top: 10px">
+								<div class="panel-body " >
+									<img src="${ctxStatic}/common/img/rengong.png">任务名称：急诊流程质量评审  <span style="background-color: orange;height: 20px">人工任务</span>
+									<table id="midTable"  cellpadding="20px" cellspacing="20px" style="border-collapse:separate; border-spacing:0px 8px;">
+										<tr><td class="tdNormal">起始时间：2019/06/14——2019/07/14</td><td class="tdNormal1">分配人：张小龙（院长）</td></tr>
+										<tr><td class="tdNormal">执行角色：急诊护士长</td><td class="tdNormal1">负责人：刘建设（副院长）</td></tr>
+										<tr><td class="tdNormal">任务描述：评审急诊流程是否完整</td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查要求：1.2保障患者诊疗过程中诊疗服务的连续性。<br>3.2按照病情紧急程度，会诊分为急会诊和普通会诊。机构内急会诊应当<br>在会诊请求发出后10分钟内到位，普通会诊应当在会诊发出后24小时内完成</td><td class="tdNormal1">岳云龙（急诊科主任）</td></tr>
+										<tr><td class="tdNormal"></td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查结果：流程完整，患者满意度高</td><td class="tdNormal1">秦晓晓（急诊科医师）</td></tr>
+									</table>
+								</div>
+							</div>
+							<div class="panel panel-primary" style="height: 300px;margin-left: 10px;margin-top: 10px">
+								<div class="panel-body " >
+									<img src="${ctxStatic}/common/img/rengong.png">任务名称：急诊流程质量评审  <span style="background-color: orange;height: 20px">人工任务</span>
+									<table id="midTable"  cellpadding="20px" cellspacing="20px" style="border-collapse:separate; border-spacing:0px 8px;">
+										<tr><td class="tdNormal">起始时间：2019/06/14——2019/07/14</td><td class="tdNormal1">分配人：张小龙（院长）</td></tr>
+										<tr><td class="tdNormal">执行角色：急诊护士长</td><td class="tdNormal1">负责人：刘建设（副院长）</td></tr>
+										<tr><td class="tdNormal">任务描述：评审急诊流程是否完整</td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查要求：1.2保障患者诊疗过程中诊疗服务的连续性。<br>3.2按照病情紧急程度，会诊分为急会诊和普通会诊。机构内急会诊应当<br>在会诊请求发出后10分钟内到位，普通会诊应当在会诊发出后24小时内完成</td><td class="tdNormal1">岳云龙（急诊科主任）</td></tr>
+										<tr><td class="tdNormal"></td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查结果：流程完整，患者满意度高</td><td class="tdNormal1">秦晓晓（急诊科医师）</td></tr>
+									</table>
+								</div>
+							</div>
+							<div class="panel panel-primary" style="height: 300px;margin-left: 10px;margin-top: 10px">
+								<div class="panel-body " >
+									<img src="${ctxStatic}/common/img/zidong.png">任务名称：急诊流程质量评审  <span style="background-color: green;height: 20px">自动任务</span>
+									<table id="midTable"  cellpadding="20px" cellspacing="20px" style="border-collapse:separate; border-spacing:0px 8px;">
+										<tr><td class="tdNormal">起始时间：2019/06/14——2019/07/14</td><td class="tdNormal1">分配人：张小龙（院长）</td></tr>
+										<tr><td class="tdNormal">执行角色：急诊护士长</td><td class="tdNormal1">负责人：刘建设（副院长）</td></tr>
+										<tr><td class="tdNormal">任务描述：评审急诊流程是否完整</td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查要求：1.2保障患者诊疗过程中诊疗服务的连续性。<br>3.2按照病情紧急程度，会诊分为急会诊和普通会诊。机构内急会诊应当<br>在会诊请求发出后10分钟内到位，普通会诊应当在会诊发出后24小时内完成</td><td class="tdNormal1">岳云龙（急诊科主任）</td></tr>
+										<tr><td class="tdNormal"></td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查结果：流程完整，患者满意度高</td><td class="tdNormal1">秦晓晓（急诊科医师）</td></tr>
+									</table>
+								</div>
+							</div>
+							<div class="panel panel-primary" style="height: 300px;margin-left: 10px;margin-top: 10px">
+								<div class="panel-body " >
+									<img src="${ctxStatic}/common/img/zidong.png">任务名称：急诊流程质量评审  <span style="background-color: green;height: 20px">自动任务</span>
+									<table id="midTable"  cellpadding="20px" cellspacing="20px" style="border-collapse:separate; border-spacing:0px 8px;">
+										<tr><td class="tdNormal">起始时间：2019/06/14——2019/07/14</td><td class="tdNormal1">分配人：张小龙（院长）</td></tr>
+										<tr><td class="tdNormal">执行角色：急诊护士长</td><td class="tdNormal1">负责人：刘建设（副院长）</td></tr>
+										<tr><td class="tdNormal">任务描述：评审急诊流程是否完整</td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查要求：1.2保障患者诊疗过程中诊疗服务的连续性。<br>3.2按照病情紧急程度，会诊分为急会诊和普通会诊。机构内急会诊应当<br>在会诊请求发出后10分钟内到位，普通会诊应当在会诊发出后24小时内完成</td><td class="tdNormal1">岳云龙（急诊科主任）</td></tr>
+										<tr><td class="tdNormal"></td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查结果：流程完整，患者满意度高</td><td class="tdNormal1">秦晓晓（急诊科医师）</td></tr>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div role="tabpane1" class="tab-pane " id="myExecute">
+							<div class="panel panel-primary" style="height: 300px;margin-left: 10px;margin-top: 10px">
+								<div class="panel-body " >
+									<img src="${ctxStatic}/common/img/rengong.png">任务名称：急诊流程质量评审  <span style="background-color: orange;height: 20px">人工任务</span>
+									<table id="midTable"  cellpadding="20px" cellspacing="20px" style="border-collapse:separate; border-spacing:0px 8px;">
+										<tr><td class="tdNormal">起始时间：2019/06/14——2019/07/14</td><td class="tdNormal1">分配人：张小龙（院长）</td></tr>
+										<tr><td class="tdNormal">执行角色：急诊护士长</td><td class="tdNormal1">负责人：刘建设（副院长）</td></tr>
+										<tr><td class="tdNormal">任务描述：评审急诊流程是否完整</td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查要求：1.2保障患者诊疗过程中诊疗服务的连续性。<br>3.2按照病情紧急程度，会诊分为急会诊和普通会诊。机构内急会诊应当<br>在会诊请求发出后10分钟内到位，普通会诊应当在会诊发出后24小时内完成</td><td class="tdNormal1">岳云龙（急诊科主任）</td></tr>
+										<tr><td class="tdNormal"></td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查结果：流程完整，患者满意度高</td><td class="tdNormal1">秦晓晓（急诊科医师）</td></tr>
+									</table>
+								</div>
+							</div>
+							<div class="panel panel-primary" style="height: 300px;margin-left: 10px;margin-top: 10px">
+								<div class="panel-body " >
+									<img src="${ctxStatic}/common/img/rengong.png">任务名称：急诊流程质量评审  <span style="background-color: orange;height: 20px">人工任务</span>
+									<table id="midTable"  cellpadding="20px" cellspacing="20px" style="border-collapse:separate; border-spacing:0px 8px;">
+										<tr><td class="tdNormal">起始时间：2019/06/14——2019/07/14</td><td class="tdNormal1">分配人：张小龙（院长）</td></tr>
+										<tr><td class="tdNormal">执行角色：急诊护士长</td><td class="tdNormal1">负责人：刘建设（副院长）</td></tr>
+										<tr><td class="tdNormal">任务描述：评审急诊流程是否完整</td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查要求：1.2保障患者诊疗过程中诊疗服务的连续性。<br>3.2按照病情紧急程度，会诊分为急会诊和普通会诊。机构内急会诊应当<br>在会诊请求发出后10分钟内到位，普通会诊应当在会诊发出后24小时内完成</td><td class="tdNormal1">岳云龙（急诊科主任）</td></tr>
+										<tr><td class="tdNormal"></td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查结果：流程完整，患者满意度高</td><td class="tdNormal1">秦晓晓（急诊科医师）</td></tr>
+									</table>
+								</div>
+							</div>
+							<div class="panel panel-primary" style="height: 300px;margin-left: 10px;margin-top: 10px">
+								<div class="panel-body " >
+									<img src="${ctxStatic}/common/img/zidong.png">任务名称：急诊流程质量评审  <span style="background-color: green;height: 20px">自动任务</span>
+									<table id="midTable"  cellpadding="20px" cellspacing="20px" style="border-collapse:separate; border-spacing:0px 8px;">
+										<tr><td class="tdNormal">起始时间：2019/06/14——2019/07/14</td><td class="tdNormal1">分配人：张小龙（院长）</td></tr>
+										<tr><td class="tdNormal">执行角色：急诊护士长</td><td class="tdNormal1">负责人：刘建设（副院长）</td></tr>
+										<tr><td class="tdNormal">任务描述：评审急诊流程是否完整</td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查要求：1.2保障患者诊疗过程中诊疗服务的连续性。<br>3.2按照病情紧急程度，会诊分为急会诊和普通会诊。机构内急会诊应当<br>在会诊请求发出后10分钟内到位，普通会诊应当在会诊发出后24小时内完成</td><td class="tdNormal1">岳云龙（急诊科主任）</td></tr>
+										<tr><td class="tdNormal"></td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查结果：流程完整，患者满意度高</td><td class="tdNormal1">秦晓晓（急诊科医师）</td></tr>
+									</table>
+								</div>
+							</div>
+							<div class="panel panel-primary" style="height: 300px;margin-left: 10px;margin-top: 10px">
+								<div class="panel-body " >
+									<img src="${ctxStatic}/common/img/zidong.png">任务名称：急诊流程质量评审  <span style="background-color: green;height: 20px">自动任务</span>
+									<table id="midTable"  cellpadding="20px" cellspacing="20px" style="border-collapse:separate; border-spacing:0px 8px;">
+										<tr><td class="tdNormal">起始时间：2019/06/14——2019/07/14</td><td class="tdNormal1">分配人：张小龙（院长）</td></tr>
+										<tr><td class="tdNormal">执行角色：急诊护士长</td><td class="tdNormal1">负责人：刘建设（副院长）</td></tr>
+										<tr><td class="tdNormal">任务描述：评审急诊流程是否完整</td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查要求：1.2保障患者诊疗过程中诊疗服务的连续性。<br>3.2按照病情紧急程度，会诊分为急会诊和普通会诊。机构内急会诊应当<br>在会诊请求发出后10分钟内到位，普通会诊应当在会诊发出后24小时内完成</td><td class="tdNormal1">岳云龙（急诊科主任）</td></tr>
+										<tr><td class="tdNormal"></td><td class="tdNormal1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</td></tr>
+										<tr><td class="tdNormal">检查结果：流程完整，患者满意度高</td><td class="tdNormal1">秦晓晓（急诊科医师）</td></tr>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div role="tabpane1" class="tab-pane " id="statistics">
+							<div class="row" style="margin-top: 10px;width: 100%">
+								<div class="col-md-12" style="width:50%;">
+									<div class="panel panel-primary">
+										<!--表格内容-->
+										<div class="panel-body" style="height:300px">
+											<h4><img height="20" width="10" src="${ctxStatic}/common/img/sekuai.png"/>本期已完成任务</h4>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-12" style="width:50%;">
+									<div class="panel panel-primary">
+										<!--表格内容-->
+										<div class="panel-body" style="height:300px">
+											<h4><img height="20" width="10" src="${ctxStatic}/common/img/sekuai.png"/>本期未完成任务</h4>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row" style="width:100%;margin-top: 10px">
+								<div class="col-md-12" style="width:100%;">
+								<div class="panel panel-primary">
+									<!--表格内容-->
+									<div class="panel-body" style="height:300px;width:100%">
+										<h4><img height="20" width="10" src="${ctxStatic}/common/img/sekuai.png"/>所有任务</h4>
+									</div>
+								</div>
 
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
 	</div>
 </div>
 </body>
@@ -159,51 +278,6 @@
 
 
 $(function(){
-	var chart = Highcharts.chart('chartDiv', {
-		chart: {
-			polar: true,
-			type: 'area'
-		},
-		pane: {
-			size: '85%'
-		},
-		title: {
-			text: '',
-			x: -80
-		},
-		credits: {
-			enabled: false     //不显示LOGO
-		},
-		xAxis: {
-			categories: ['工作效率', '工作负荷', '资产运营', '质量管理','DRGs评价'],
-			tickmarkPlacement: 'on',
-			lineWidth: 0
-		},
-		yAxis: {
-			gridLineInterpolation: 'polygon',
-			max:100,
-			min:0,
-			lineWidth:0,
-
-		},
-		tooltip: {
-			shared: true,
-		},
-		legend: {
-			align: 'right',
-		},
-		series: [{
-			name: '本院水平',
-			color: '#BFE7A8',
-			data: [40, 40, 100, 80, 80,],
-			pointPlacement: 'on'
-		}, {
-			name: '区域平均水平',
-			color: '#B0D2F4',
-			data: [100, 80, 100, 60, 80,],
-			pointPlacement: 'on'
-		}]
-	});
 
 
 
