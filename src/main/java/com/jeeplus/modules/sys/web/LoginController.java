@@ -277,10 +277,16 @@ public class LoginController extends BaseController{
 			if (StringUtils.isNotEmpty(indexStyle)
 					&& indexStyle.equalsIgnoreCase("jp")) {
 				//return "modules/sys/login/sysIndex-jp";
+				if(request.getSession().getAttribute("standType").equals("医院等级标准（2018版）")){
+					return "modules/sys/login/gradeHospitalReview";
+				}
 				return "modules/sys/login/modules";
 			}
  
 			//return "modules/sys/login/sysIndex";
+			if(request.getSession().getAttribute("standType").equals("医院等级标准（2018版）")){
+				return "modules/sys/login/gradeHospitalReview";
+			}
 			return "modules/sys/login/modules";
 		}
 		
@@ -305,6 +311,22 @@ public class LoginController extends BaseController{
 	public String ope(HttpServletRequest request, HttpServletResponse response) {
 		return "modules/sys/login/home";
 		//return "modules/sys/login/sysIndex-jp";
+	}
+	/**
+	 * 点击进入管理任务页
+	 */
+	@RequiresPermissions("user")
+	@RequestMapping(value = "${adminPath}/manageMission")
+	public String manageMission(HttpServletRequest request, HttpServletResponse response) {
+		return "modules/sys/login/manageMission";
+	}
+	/**
+	 * 点击进入评估表
+	 */
+	@RequiresPermissions("user")
+	@RequestMapping(value = "${adminPath}/evaluationSheet")
+	public String evaluationSheet(HttpServletRequest request, HttpServletResponse response) {
+		return "modules/sys/login/evaluationSheet";
 	}
 	/**
 	 * 模块页

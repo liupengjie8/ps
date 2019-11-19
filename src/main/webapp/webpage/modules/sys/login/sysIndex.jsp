@@ -115,6 +115,7 @@
 <li class="panel">
 <a data-toggle="collapse" data-parent="#4cbb0aff499044aba652b5f3d9c96a46" class="" href="#b4e95f3f9fc94c2aa6a8bf9ffa02354b" aria-expanded="true"><i class="fa null"></i>&nbsp;&nbsp;手术评估<span class="pull-right fa fa-angle-toggle"></span></a>
 <ul id="b4e95f3f9fc94c2aa6a8bf9ffa02354b" class="nav collapse in" aria-expanded="true" style="">
+<li><a target="iframe0" class="J_menuItem1" href="/ps/a/evaluationSheet" ><i class="fa null"></i>&nbsp;&nbsp;评估表</a></li>
 <li><a target="iframe0" class="J_menuItem1" href="/ps/a/indexForm/indexForm/indexForm?fromPage=leftTree&amp;nodeName=适应证评估" ><i class="fa null"></i>&nbsp;&nbsp;适应证评估</a></li>
 <li><a target="iframe0" class="J_menuItem1" href="/ps/a/indexForm/indexForm/indexForm?fromPage=leftTree&amp;nodeName=等级评估" ><i class="fa null"></i>&nbsp;&nbsp;等级评估</a></li>
 <li><a target="iframe0" class="J_menuItem1" href="/ps/a/indexForm/indexForm/indexForm?fromPage=leftTree&amp;nodeName=风险评估" ><i class="fa null"></i>&nbsp;&nbsp;风险评估</a></li>

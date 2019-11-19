@@ -245,6 +245,10 @@
 			<h2 class="box-text">医疗管理</h2>
 			<div class="box-main">
 				<div class="box-main-box">
+					<div class="box-main-box-mid"><p class="drop-down-btn-noarrow " id="manageMission">管理任务</p></div>
+					<p class="box-main-box-right"> <img class="box-main-box-right-img" src="${ctxStatic}/common/img/modules/Tips-red.png" > </p>
+				</div>
+				<div class="box-main-box">
 					<div class="box-main-box-mid">
 							<p class="drop-down-btn active" onmouseover="showDropDownList('hzaqmb')" onclick="hiddenDropDownList('hzaqmb')">患者安全目标</p>
 							<div class="drop-down-list" style="display:none;" id='hzaqmb'>
@@ -299,15 +303,16 @@
 										<div class="drop-down-list-li " >健康教育</div>
 										<img class="drop-down-list-li-img"  src="${ctxStatic}/common/img/modules/Tips-green.png" > 
 									</li>
+									<li>
+										<div class="drop-down-list-li " >护理管理</div>
+										<img class="drop-down-list-li-img"  src="${ctxStatic}/common/img/modules/Tips-green.png" >
+									</li>
 								</ul>
 							</div>
 					</div>	
 					<p class="box-main-box-right"> <img class="box-main-box-right-img" src="${ctxStatic}/common/img/modules/Tips-green.png" > </p>
 				</div>
-				<div class="box-main-box">
-					<div class="box-main-box-mid"><p class="drop-down-btn-noarrow ">护理管理</p></div>
-					<p class="box-main-box-right"> <img class="box-main-box-right-img" src="${ctxStatic}/common/img/modules/Tips-green.png" > </p>
-				</div>
+
 				<div class="box-main-box">
 					<div class="box-main-box-mid">
 							<p class="drop-down-btn active" onmouseover="showDropDownList('yxgl')" onclick="hiddenDropDownList('yxgl')">药械管理</p>
@@ -459,6 +464,10 @@ $(function(){
 		    	}
 		    }
 		});
+	$('#manageMission').click(function() {
+		window.location.href="/ps/a/manageMission";
+	});
+
 });
 function showDropDownList(obj){
 	$('.drop-down-list').css('display','none');
