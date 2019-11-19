@@ -168,9 +168,11 @@ $(function(){
 			});	
 	})
 	function showBar(xAxisData,seriesData,seriesDataLastYear){
-		var myChart = echarts.init(document.getElementById('lineChart'));
+		$("#returnStageSpan").html('');
+		const myChart = echarts.init(document.getElementById('lineChart'),true);
 	    window.onresize = myChart.resize;
-	    option = {
+		myChart.clear();
+		const option = {
 	    	    color: ['#003366', '#006699', '#4cabce', '#e5323e'],
 	    	    tooltip: {
 	    	        trigger: 'axis',
@@ -227,14 +229,15 @@ $(function(){
 		myChart.setOption(option);
 		myChart.on('click',(params)=>{
 			$("#stageName").val(params.name);//术前
-			$("#stageYear").val(params.seriesName);//今年
+			//$("#stageYear").val(params.seriesName);//今年
 			 $.ajax({
 					url:"${ctx}/opebarchart/opeBarChart/segmentBarData",
 					type:"post",
 					dataType:"json",
 					data:$("#searchForm").serializeJSON(),
-					success:function(res){	
-						showSegmentBar(res.xAxisData,res.seriesData,res.seriesDataLastYear);
+					success:function(res){
+						myChart.dispose();
+						showSegmentBar(res.xAxisData,res.seriesData,res.seriesDataLastYear,params.name);
 					},
 					fail:function(err){
 						console.log(err);
@@ -243,10 +246,14 @@ $(function(){
 			
 	    })
 	}
-	function showSegmentBar(xAxisData,seriesData,seriesDataLastYear){
-		var myChart = echarts.init(document.getElementById('lineChart'));
-	    window.onresize = myChart.resize;
-	    option = {
+
+	function showSegmentBar(xAxisData,seriesData,seriesDataLastYear,stageName){
+
+		$("#returnStageSpan").html('<button  onclick="returnStage()">返回阶段柱状图</button>');
+		const myChart1 = echarts.init(document.getElementById('lineChart'),true);
+	    window.onresize = myChart1.resize;
+		myChart1.clear();
+		const option = {
 	    	    color: ['#003366', '#006699', '#4cabce', '#e5323e'],
 	    	    tooltip: {
 	    	        trigger: 'axis',
@@ -293,17 +300,20 @@ $(function(){
 	    	       
 	    	    ]
 	    	};
-		myChart.setOption(option);
-		myChart.on('click',(params)=>{
-			$("#stageName").val(params.name);//术前
-			$("#stageYear").val(params.seriesName);//今年
+		myChart1.setOption(option);
+		myChart1.on('click',(params)=>{
+			myChart1.clear();
+			$("#stageName").val(params.name);
+			$("#stageYear").val(params.seriesName);
+
 			 $.ajax({
 					url:"${ctx}/opebarchart/opeBarChart/nodeBarData",
 					type:"post",
 					dataType:"json",
 					data:$("#searchForm").serializeJSON(),
-					success:function(res){	
-						showNodeBar(res.xAxisData,res.seriesData,res.seriesDataLastYear);
+					success:function(res){
+						myChart1.dispose();
+						showNodeBar(res.xAxisData,res.seriesData,res.seriesDataLastYear,stageName);
 					},
 					fail:function(err){
 						console.log(err);
@@ -312,10 +322,32 @@ $(function(){
 			
 	    })
 	}
-	function showNodeBar(xAxisData,seriesData,seriesDataLastYear){
-		var myChart = echarts.init(document.getElementById('lineChart'));
-	    window.onresize = myChart.resize;
-	    option = {
+	function returnStage(){
+
+		search();
+	}
+	function returnSemgent(stageName){
+		$("#stageName").val(stageName);//术前
+		//$("#stageYear").val(params.seriesName);//今年
+		$.ajax({
+			url:"${ctx}/opebarchart/opeBarChart/segmentBarData",
+			type:"post",
+			dataType:"json",
+			data:$("#searchForm").serializeJSON(),
+			success:function(res){
+				showSegmentBar(res.xAxisData,res.seriesData,res.seriesDataLastYear,stageName);
+			},
+			fail:function(err){
+				console.log(err);
+			}
+		});
+	}
+	function showNodeBar(xAxisData,seriesData,seriesDataLastYear,stageName){
+		$("#returnStageSpan").html('<button  onclick="returnSemgent(\''+stageName+'\')">返回环节柱状图</button>');
+		const myChart2 = echarts.init(document.getElementById('lineChart'),true);
+	    window.onresize = myChart2.resize;
+		myChart2.clear();
+	    const option = {
 	    	    color: ['#003366', '#006699', '#4cabce', '#e5323e'],
 	    	    tooltip: {
 	    	        trigger: 'axis',
@@ -362,8 +394,8 @@ $(function(){
 	    	       
 	    	    ]
 	    	};
-		myChart.setOption(option);
-		myChart.on('click',(params)=>{
+		myChart2.setOption(option);
+		myChart2.on('click',(params)=>{
         	window.location.href="/ps/a/opedetail/opeDetail/opeDetail?isQualified=0&node="+params.name;
 	    })
 	}	
@@ -462,6 +494,9 @@ $(function(){
         				<div class="col-md-12">
         				<div class="panel panel-primary">
         				<div class="pull-right-selectarea" style="margin-top:0px">
+							<span id="returnStageSpan">
+							<button  onclick="returnStage()">返回阶段柱状图</button>
+							</span>
                             <button class="btn btn-primary" id="showHiddenSelectAreaBtn" title="收起查询区域" onclick="showHiddenSelectArea()">
                             <i class="glyphicon  glyphicon-upload"></i>
                             </button>

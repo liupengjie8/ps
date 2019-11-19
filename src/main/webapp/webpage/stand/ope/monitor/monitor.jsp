@@ -345,7 +345,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4 col-sm-4">
+					<%--		<div class="col-md-4 col-sm-4">
 								<div class="form-group">
 									<div class="row">
 										<div class=" update-align-items "> 术前准备 </div>
@@ -373,7 +373,7 @@
 										</c:forEach>
 									</div>
 								</div>
-							</div>
+							</div>--%>
 						</div>
 					</div>
 				</div>
@@ -543,7 +543,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4 col-sm-4">
+			<%--				<div class="col-md-4 col-sm-4">
 								<div class="form-group">
 									<div class="row">
 										<div class=" update-align-items "> 术前准备 </div>
@@ -571,7 +571,7 @@
 										</c:forEach>
 									</div>
 								</div>
-							</div>
+							</div>--%>
 						</div>
 					</div>
 				</div>

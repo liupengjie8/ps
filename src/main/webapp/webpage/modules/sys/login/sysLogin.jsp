@@ -73,7 +73,7 @@
 							<i class="icon-class-selection"></i>
 							<select id="standType" name="standType" class="form-control input-underline input-lg">
 							  <option value ="团体标准" selected>团体标准</option>
-							  <option value ="三级评审标准（2018版）">三级评审标准（2018版）</option>
+							  <option value ="医院等级标准（2018版）">医院等级标准（2018版）</option>
 							  <option value="JCI">JCI</option>
 							</select>
 						</div>

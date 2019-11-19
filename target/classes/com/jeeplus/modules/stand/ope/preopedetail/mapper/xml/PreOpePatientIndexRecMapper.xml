@@ -100,7 +100,8 @@
 		<include refid="preOpePatientIndexRecJoins"/>
 		WHERE a.id = #{id}
 	</select>
-	
+
+
 	<select id="findList" resultType="PreOpePatientIndexRec" >
 		SELECT 
 			<include refid="preOpePatientIndexRecColumns"/>
@@ -149,7 +150,11 @@
 			</otherwise>
 		</choose>
 	</select>
-	
+	<select id="getIndexIdsByChartId" resultType="string" parameterType="string">
+		select indexs_id
+  		from OPE_QC_STAND_CONFIG t
+ 		where t.flow_id = #{param}
+	</select>
 	<select id="findAllList" resultType="PreOpePatientIndexRec" >
 		SELECT 
 			<include refid="preOpePatientIndexRecColumns"/>

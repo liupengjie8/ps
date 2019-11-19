@@ -127,6 +127,10 @@ public class LoginController extends BaseController{
 		
 		// 如果已经登录，则跳转到管理首页
 		if(principal != null){
+			//如果选择等级医院评审，跳转到等级医院评审
+			if(request.getParameter("standType").equals("医院等级标准（2018版）")){
+				return "redirect:" + adminPath;
+			}
 			return "redirect:" + adminPath;
 		}
 

@@ -46,7 +46,7 @@
                         html
                         //第一个表头
                         var btList = result.btList;
-                         html += '<th class="th1"> </th>';
+                         html += '<th class="th1" align="center"> </th>';
                         for (j = 0, len = btList.length; j < len; j++) {
                             html += '<th class="th2"  colspan="3"  >' + btList[j] + '</th>'
                         }
@@ -300,7 +300,7 @@
                     $("#th_element").html('');
                     var th_content = '<th class="th1"> </th>';
                     for (j = 0, len = btList.length; j < len; j++) {
-                        th_content += '<th class="th2"  colspan="3"  >' + btList[j] + '</th>'
+                        th_content += '<th class="th2"  align="center" colspan="3"  >' + btList[j] + '</th>'
                     }
                     $("#th_element").html(th_content);
 
@@ -308,9 +308,9 @@
                     $("#tr_element").html('');
                     var tr_content = '<tr><td class="td1">' + $("#zbm").find("option:selected").text() + '</td>';
                     for (j = 0, len = btList.length; j < len; j++) {
-                        tr_content += '<td class="td1" style="border-right: none;" >人次</td>'
-                        tr_content += '<td class="td1" style="border-right: none;" >不达标人次</td>'
-                        tr_content += '<td class="td1">' + index_suffix + '</td>'
+                        tr_content += '<td class="td1"  align="center" style="border-right: none;" >人次</td>'
+                        tr_content += '<td class="td1"  align="center" style="border-right: none;" >不达标人次</td>'
+                        tr_content += '<td class="td1"  align="center" >' + index_suffix + '%</td>'
                     }
                     tr_content += '</tr>';
                     $("#tr_element").html(tr_content);
@@ -321,19 +321,19 @@
                     for (i = 0, lena = dataList.length; i < lena; i++) {
                         dt_content += '<tr>'
                         if (dataList[i][zbm.toUpperCase()].indexOf("中心") != -1) {
-                            dt_content += '<td class="td1" style="border-right: none;font-size : medium" >' + dataList[i][zbm.toUpperCase()] + '</td>'
+                            dt_content += '<td class="td1" style="border-right: none;font-size : medium;text-align:left" >' + dataList[i][zbm.toUpperCase()] + '</td>'
                         } else if (dataList[i][zbm.toUpperCase()].indexOf("临床部") != -1) {
-                            dt_content += '<td class="td1" style="border-right: none;font-size : small;text-indent:20px" >' + dataList[i][zbm.toUpperCase()] + '</td>'
+                            dt_content += '<td class="td1" style="border-right: none;font-size : small;text-align:left" >' + dataList[i][zbm.toUpperCase()] + '</td>'
                         } else {
-                            dt_content += '<td class="td1" style="border-right: none;font-size : x-small;text-indent:40px" >' + dataList[i][zbm.toUpperCase()] + '</td>'
+                            dt_content += '<td class="td1" style="border-right: none;font-size : x-small;text-align:left" >' + dataList[i][zbm.toUpperCase()] + '</td>'
                         }
                         for (j = 0, len = btList.length; j < len; j++) {
-                            dt_content += '<td class="td1" style="border-right: none;" >' + dataList[i][btList[j] + 'ALLCOUNT'] + '</td>'
-                            dt_content += '<td class="td1" style="border-right: none;" >' + dataList[i][btList[j] + 'NQCOUNT'] + '</td>'
+                            dt_content += '<td class="td1" style="border-right: none;text-align:right" >' + dataList[i][btList[j] + 'ALLCOUNT'] + '</td>'
+                            dt_content += '<td class="td1" style="border-right: none;text-align:right" >' + dataList[i][btList[j] + 'NQCOUNT'] + '</td>'
                             if (dataList[i][btList[j] + 'ALLCOUNT'] == 0) {
-                                dt_content += '<td class="td1">--</td>'
+                                dt_content += '<td class="td1" style="border-right: none;text-align:right">--</td>'
                             } else {
-                                dt_content += '<td class="td1">' + Math.round((dataList[i][btList[j] + 'ALLCOUNT'] - dataList[i][btList[j] + 'NQCOUNT']) * 100 / dataList[i][btList[j] + 'ALLCOUNT'], 2) + '</td>'
+                                dt_content += '<td class="td1" style="border-right: none;text-align:right">' + Math.round((dataList[i][btList[j] + 'ALLCOUNT'] - dataList[i][btList[j] + 'NQCOUNT']) * 100 / dataList[i][btList[j] + 'ALLCOUNT'], 2) + '</td>'
                             }
                         }
                         dt_content += '</tr>'
