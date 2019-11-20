@@ -24,7 +24,7 @@
 </head>
 <body style="font-size:8px">
 <div class="wrap"  >
-	<div><h2 style="display:inline-block">&nbsp;&nbsp;&nbsp;&nbsp;管理任务</h2><span style="float: right;margin-top: 23px;margin-right: 20px"><h4 ><a href="/ps/a/logout">安全退出</a></h4></span></div>
+	<div><h2 style="display:inline-block">&nbsp;&nbsp;&nbsp;&nbsp;管理要求</h2><span style="float: right;margin-top: 23px;margin-right: 20px"><h4 ><a href="/ps/a/logout">安全退出</a></h4></span></div>
 	<div class="row">
 		<div class="col-md-12" style="width:30%;">
 			<div class="panel panel-primary">

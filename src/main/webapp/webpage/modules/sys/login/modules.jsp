@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="wrap">
-	<div class="title title-color"> <img class="title-img" src="${ctxStatic}/common/img/modules/title_icon.svg" > <span class="title-text"> 医疗质量安全标准运行监测系统 </span> </div>
+	<div class="title title-color"> <img class="title-img" src="${ctxStatic}/common/img/modules/title_icon.svg" > <span class="title-text"> 医院流程标准化管理平台 </span> </div>
 	<div class="main">
 		<div class="box box_bg">
 			<h2 class="box-text">门急诊服务</h2>
@@ -249,6 +249,10 @@
 					<p class="box-main-box-right"> <img class="box-main-box-right-img" src="${ctxStatic}/common/img/modules/Tips-red.png" > </p>
 				</div>
 				<div class="box-main-box">
+					<div class="box-main-box-mid"><p class="drop-down-btn-noarrow " id="managerRequire">管理要求</p></div>
+					<p class="box-main-box-right"> <img class="box-main-box-right-img" src="${ctxStatic}/common/img/modules/Tips-red.png" > </p>
+				</div>
+				<div class="box-main-box">
 					<div class="box-main-box-mid">
 							<p class="drop-down-btn active" onmouseover="showDropDownList('hzaqmb')" onclick="hiddenDropDownList('hzaqmb')">患者安全目标</p>
 							<div class="drop-down-list" style="display:none;" id='hzaqmb'>
@@ -307,6 +311,10 @@
 										<div class="drop-down-list-li " >护理管理</div>
 										<img class="drop-down-list-li-img"  src="${ctxStatic}/common/img/modules/Tips-green.png" >
 									</li>
+									<li>
+										<div class="drop-down-list-li " >感染管理</div>
+										<img class="drop-down-list-li-img"  src="${ctxStatic}/common/img/modules/Tips-green.png" >
+									</li>
 								</ul>
 							</div>
 					</div>	
@@ -335,10 +343,7 @@
 					</div>	
 					<p class="box-main-box-right"> <img class="box-main-box-right-img" src="${ctxStatic}/common/img/modules/Tips-green.png" > </p>
 				</div>
-				<div class="box-main-box">
-					<div class="box-main-box-mid"><p class="drop-down-btn-noarrow ">感染管理</p></div>
-					<p class="box-main-box-right"> <img class="box-main-box-right-img" src="${ctxStatic}/common/img/modules/Tips-green.png" > </p>
-				</div>
+
 			</div>
 		</div>
 		<div class="box box_bg4">
@@ -466,6 +471,9 @@ $(function(){
 		});
 	$('#manageMission').click(function() {
 		window.location.href="/ps/a/manageMission";
+	});
+	$('#managerRequire').click(function() {
+		window.location.href="/ps/a/managerRequire";
 	});
 
 });

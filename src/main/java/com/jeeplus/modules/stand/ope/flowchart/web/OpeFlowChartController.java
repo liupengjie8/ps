@@ -77,6 +77,18 @@ public class OpeFlowChartController extends BaseController {
 		model.addAttribute("opeFlowChartTable", opeFlowChartTable);
 		return "stand/ope/flowcharts/flowchart";
 	}
+	/**
+	 * 标准流程列表页面
+	 */
+	@RequiresPermissions("flowcharttable:opeFlowChartTable:list")
+	@RequestMapping(value = "flowChart1")
+	public String list1(OpeFlowChartTable opeFlowChartTable, Model model,HttpServletRequest request) {
+		//获取session中的标准类型
+		String standType = (String)request.getSession().getAttribute("standType");
+		/*System.out.println(standType);*/
+		model.addAttribute("opeFlowChartTable", opeFlowChartTable);
+		return "stand/ope/flowcharts/flowchart1";
+	}
 	
 		/**
 	 * 标准流程列表数据

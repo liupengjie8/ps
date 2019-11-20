@@ -8,7 +8,7 @@ $(document).ready(function() {
                //类型json
                dataType: "json",
                contentType: "application/x-www-form-urlencoded",
-               //显示检索按钮
+              /* //显示检索按钮
 	           showSearch: true,
                //显示刷新按钮
                showRefresh: true,
@@ -19,7 +19,7 @@ $(document).ready(function() {
     	       //显示到处按钮
     	       showExport: true,
     	       //显示切换分页按钮
-    	       showPaginationSwitch: true,
+    	       showPaginationSwitch: true,*/
     	       //最低显示2行
     	       minimumCountColumns: 2,
                //是否显示行间隔色

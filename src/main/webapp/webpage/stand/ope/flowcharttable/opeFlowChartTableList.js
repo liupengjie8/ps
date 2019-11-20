@@ -1,5 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <script>
+	function goToFlowChart(){
+		window.open("/ps/a/flowchart/flowChart/flowChart1", "_blank")
+	}
 $(document).ready(function() {
 	$('#opeFlowChartTableTable').bootstrapTable({
 		 
@@ -8,18 +11,18 @@ $(document).ready(function() {
                //类型json
                dataType: "json",
                contentType: "application/x-www-form-urlencoded",
-               //显示检索按钮
-	           showSearch: true,
-               //显示刷新按钮
-               showRefresh: true,
-               //显示切换手机试图按钮
-               showToggle: true,
-               //显示 内容列下拉框
-    	       showColumns: true,
-    	       //显示到处按钮
-    	       showExport: true,
-    	       //显示切换分页按钮
-    	       showPaginationSwitch: true,
+				//显示检索按钮
+				showSearch: false,
+				//显示刷新按钮
+				showRefresh: false,
+				//显示切换手机试图按钮
+				showToggle: false,
+				//显示 内容列下拉框
+				showColumns: false,
+				//显示到处按钮
+				showExport: false,
+				//显示切换分页按钮
+				showPaginationSwitch: false,
     	       //最低显示2行
     	       minimumCountColumns: 2,
                //是否显示行间隔色
@@ -115,7 +118,22 @@ $(document).ready(function() {
 		        sortable: true,
 		        sortName: 'pageName'
 		       
-		    }
+		    },{
+					   field: 'yycj',
+					   title: '应用场景',
+					   sortable: true,
+					   sortName: 'yycj',
+					   formatter:function(value, row , index){
+						   if(row.row<=5){
+							   return "团标、院标";
+						   }else if(row.row<=10){
+							   return "JCI";
+						   }else{
+							   return "团标";
+						   }
+					   }
+
+				   }
 			,{
 		        field: 'pageId',
 		        title: '流程页',

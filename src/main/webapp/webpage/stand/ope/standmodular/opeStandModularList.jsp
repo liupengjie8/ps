@@ -26,41 +26,18 @@
 			  <a  id="search" class="btn btn-primary btn-rounded  btn-bordered btn-sm"><i class="fa fa-search"></i> 查询</a>
 			  <a  id="reset" class="btn btn-primary btn-rounded  btn-bordered btn-sm" ><i class="fa fa-refresh"></i> 重置</a>
 			 </div>
-	    </div>	
+	    </div>
 	</form:form>
 	</div>
 	</div>
 	
 	<!-- 工具栏 -->
 	<div id="toolbar">
-			<shiro:hasPermission name="standmodular:opeStandModular:add">
-				<button id="add" class="btn btn-primary" onclick="add()">
-					<i class="glyphicon glyphicon-plus"></i> 新建
-				</button>
-			</shiro:hasPermission>
-			<shiro:hasPermission name="standmodular:opeStandModular:edit">
-			    <button id="edit" class="btn btn-success" disabled onclick="edit()">
-	            	<i class="glyphicon glyphicon-edit"></i> 修改
-	        	</button>
-			</shiro:hasPermission>
-			<shiro:hasPermission name="standmodular:opeStandModular:del">
-				<button id="remove" class="btn btn-danger" disabled onclick="deleteAll()">
-	            	<i class="glyphicon glyphicon-remove"></i> 删除
-	        	</button>
-			</shiro:hasPermission>
+
 			<shiro:hasPermission name="standmodular:opeStandModular:import">
 				<button id="btnImport" class="btn btn-info"><i class="fa fa-folder-open-o"></i> 导入</button>
 			</shiro:hasPermission>
-			<shiro:hasPermission name="standmodular:opeStandModular:export">
-	        		<button id="export" class="btn btn-warning">
-					<i class="fa fa-file-excel-o"></i> 导出
-				</button>
-			 </shiro:hasPermission>
-	                 <shiro:hasPermission name="standmodular:opeStandModular:view">
-				<button id="view" class="btn btn-default" disabled onclick="view()">
-					<i class="fa fa-search-plus"></i> 查看
-				</button>
-			</shiro:hasPermission>
+
 		    </div>
 		
 	<!-- 表格 -->

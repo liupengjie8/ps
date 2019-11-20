@@ -33,35 +33,10 @@
 	
 	<!-- 工具栏 -->
 	<div id="toolbar">
-			<shiro:hasPermission name="flowcharttable:opeFlowChartTable:add">
-				<button id="add" class="btn btn-primary" onclick="add()">
-					<i class="glyphicon glyphicon-plus"></i> 新建
-				</button>
-			</shiro:hasPermission>
-			<shiro:hasPermission name="flowcharttable:opeFlowChartTable:edit">
-			    <button id="edit" class="btn btn-success" disabled onclick="edit()">
-	            	<i class="glyphicon glyphicon-edit"></i> 修改
-	        	</button>
-			</shiro:hasPermission>
-			<shiro:hasPermission name="flowcharttable:opeFlowChartTable:del">
-				<button id="remove" class="btn btn-danger" disabled onclick="deleteAll()">
-	            	<i class="glyphicon glyphicon-remove"></i> 删除
-	        	</button>
-			</shiro:hasPermission>
-			<shiro:hasPermission name="flowcharttable:opeFlowChartTable:import">
+
 				<button id="btnImport" class="btn btn-info"><i class="fa fa-folder-open-o"></i> 导入</button>
-			</shiro:hasPermission>
-			<shiro:hasPermission name="flowcharttable:opeFlowChartTable:export">
-	        		<button id="export" class="btn btn-warning">
-					<i class="fa fa-file-excel-o"></i> 导出
-				</button>
-			 </shiro:hasPermission>
-	                 <shiro:hasPermission name="flowcharttable:opeFlowChartTable:view">
-				<button id="view" class="btn btn-default" disabled onclick="view()">
-					<i class="fa fa-search-plus"></i> 查看
-				</button>
-			</shiro:hasPermission>
-		    </div>
+		        <button id="flowchart" onclick="goToFlowChart()" class="btn btn-info"><i class="fa fa-folder-open-o"></i> 浏览流程</button>
+	</div>
 		
 	<!-- 表格 -->
 	<table id="opeFlowChartTableTable"   data-toolbar="#toolbar"></table>

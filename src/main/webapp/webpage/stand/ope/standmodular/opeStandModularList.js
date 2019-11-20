@@ -8,18 +8,18 @@ $(document).ready(function() {
                //类型json
                dataType: "json",
                contentType: "application/x-www-form-urlencoded",
-               //显示检索按钮
-	           showSearch: true,
-               //显示刷新按钮
-               showRefresh: true,
-               //显示切换手机试图按钮
-               showToggle: true,
-               //显示 内容列下拉框
-    	       showColumns: true,
-    	       //显示到处按钮
-    	       showExport: true,
-    	       //显示切换分页按钮
-    	       showPaginationSwitch: true,
+				//显示检索按钮
+				showSearch: false,
+				//显示刷新按钮
+				showRefresh: false,
+				//显示切换手机试图按钮
+				showToggle: false,
+				//显示 内容列下拉框
+				showColumns: false,
+				//显示到处按钮
+				showExport: false,
+				//显示切换分页按钮
+				showPaginationSwitch: false,
     	       //最低显示2行
     	       minimumCountColumns: 2,
                //是否显示行间隔色
@@ -80,11 +80,8 @@ $(document).ready(function() {
                	onShowSearch: function () {
 			$("#search-collapse").slideToggle();
 		},
-               columns: [{
-		        checkbox: true
-		       
-		    }
-			,{
+               columns: [
+			{
 		        field: 'modularName',
 		        title: '模块名称',
 		        sortable: true,

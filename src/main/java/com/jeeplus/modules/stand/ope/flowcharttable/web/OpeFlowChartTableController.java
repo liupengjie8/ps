@@ -64,7 +64,7 @@ public class OpeFlowChartTableController extends BaseController {
 	/**
 	 * 标准流程列表页面
 	 */
-	@RequiresPermissions("flowcharttable:opeFlowChartTable:list")
+	@RequiresPermissions("user")
 	@RequestMapping(value = {"list", ""})
 	public String list(OpeFlowChartTable opeFlowChartTable, Model model) {
 		model.addAttribute("opeFlowChartTable", opeFlowChartTable);
@@ -75,7 +75,7 @@ public class OpeFlowChartTableController extends BaseController {
 	 * 标准流程列表数据
 	 */
 	@ResponseBody
-	@RequiresPermissions("flowcharttable:opeFlowChartTable:list")
+	@RequiresPermissions("user")
 	@RequestMapping(value = "data")
 	public Map<String, Object> data(OpeFlowChartTable opeFlowChartTable, HttpServletRequest request, HttpServletResponse response, Model model) {
 		Page<OpeFlowChartTable> page = opeFlowChartTableService.findPage(new Page<OpeFlowChartTable>(request, response), opeFlowChartTable); 
@@ -173,7 +173,7 @@ public class OpeFlowChartTableController extends BaseController {
 
 	 */
 	@ResponseBody
-	@RequiresPermissions("flowcharttable:opeFlowChartTable:import")
+	@RequiresPermissions("user")
     @RequestMapping(value = "import")
    	public AjaxJson importFile(@RequestParam("file")MultipartFile file, HttpServletResponse response, HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
@@ -208,7 +208,7 @@ public class OpeFlowChartTableController extends BaseController {
 	 * 下载导入标准流程数据模板
 	 */
 	@ResponseBody
-	@RequiresPermissions("flowcharttable:opeFlowChartTable:import")
+	@RequiresPermissions("user")
     @RequestMapping(value = "import/template")
      public AjaxJson importFileTemplate(HttpServletResponse response) {
 		AjaxJson j = new AjaxJson();

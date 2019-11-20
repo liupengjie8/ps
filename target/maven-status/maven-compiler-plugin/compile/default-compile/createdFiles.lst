@@ -32,6 +32,7 @@ com\jeeplus\modules\stand\ope\opecolumn\service\OpeColumnService.class
 com\jeeplus\modules\stand\ope\monitor\mapper\OpeMonitorMapper.class
 com\jeeplus\modules\act\rest\DispatcherServletConfiguration.class
 com\jeeplus\modules\test\validation\web\TestValidationController.class
+com\jeeplus\modules\stand\ope\managerequire\mapper\ManageRequireMapper.class
 com\jeeplus\modules\sys\security\SystemAuthorizingRealm$Principal.class
 com\jeeplus\common\utils\excel\annotation\ExcelField.class
 com\jeeplus\common\websocket\service\system\SystemInfoSocketHandler.class
@@ -50,6 +51,7 @@ com\jeeplus\modules\iim\web\ContactController.class
 com\jeeplus\common\utils\collection\type\primitive\LongObjectHashMap$EntrySet.class
 com\jeeplus\common\utils\concurrent\jsr166e\ConcurrentHashMapV8$MapReduceKeysToDoubleTask.class
 com\jeeplus\common\utils\log\ThrottledSlf4jLogger.class
+com\jeeplus\modules\stand\ope\managerequire\web\ManageRequireController.class
 com\jeeplus\common\utils\MobileUtils.class
 com\jeeplus\modules\echarts\web\scatter\ScatterSample2.class
 com\jeeplus\modules\echarts\entity\other\TestPieClass.class
@@ -82,6 +84,7 @@ com\jeeplus\modules\test\pic\entity\TestPic.class
 com\jeeplus\core\persistence\dialect\db\PostgreSQLDialect.class
 com\jeeplus\modules\stand\ope\preopedetail\service\PreOpePatientIndexRecService.class
 com\jeeplus\modules\act\rest\FilterServletOutputStream.class
+com\jeeplus\modules\stand\ope\managerequire\service\ManageRequireService.class
 com\jeeplus\modules\test\treetable\form\entity\Car2.class
 com\jeeplus\modules\echarts\web\gauge\GaugeSample.class
 com\jeeplus\common\utils\collection\MapUtil$ValueCreator.class
@@ -302,6 +305,7 @@ com\jeeplus\modules\test\validation\mapper\TestValidationMapper.class
 com\jeeplus\modules\test\onetomany\dialog\service\TestDataMain1Service.class
 com\jeeplus\common\mail\MailAuthenticator.class
 com\jeeplus\common\utils\concurrent\throttle\Sampler.class
+com\jeeplus\modules\stand\ope\managerequire\entity\ManageRequire.class
 com\jeeplus\modules\oa\entity\OaNotify.class
 com\jeeplus\modules\stand\ope\opestandstage\mapper\OpeStandStageMapper.class
 com\jeeplus\modules\test\treetable\form\entity\CarKind2.class

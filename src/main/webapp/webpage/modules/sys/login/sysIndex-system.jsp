@@ -23,7 +23,7 @@
 
 <body class="">
 	<nav class="navbar topnav-navbar navbar-fixed-top" role="navigation">
-			<div class="title title-color"> <img class="title-img" src="${ctxStatic}/common/img/modules/title_icon.svg" > <span class="title-text"> 医疗质量安全标准运行监测系统 </span> </div>
+			<div class="title title-color"> <img class="title-img" src="${ctxStatic}/common/img/modules/title_icon.svg" > <span class="title-text"> 医院流程标准化管理平台 </span> </div>
 		    <div class="navbar-header text-center">
 			<button type="button" class="navbar-toggle" id="showMenu">
 				<span class="sr-only">Toggle navigation</span> <span

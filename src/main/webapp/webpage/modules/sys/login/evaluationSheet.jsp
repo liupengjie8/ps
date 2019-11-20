@@ -6,7 +6,6 @@
 <meta charset="utf-8" />
 <title>医疗质量安全标准运行监测系统</title>
 <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<link rel="stylesheet" type="text/css" href="${ctxStatic}/common/css/app-gradereview.css"/>
 <link rel="stylesheet" href="${ctxStatic}/common/css/skill-bar/an-skill-bar.css">
 <link rel="stylesheet" href="${ctxStatic}/common/css/skill-bar/main.css">
 <script src="${ctxStatic}/common/js/jquery-1.7.2.min.js"></script>

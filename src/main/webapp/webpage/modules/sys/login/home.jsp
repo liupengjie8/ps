@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="wrap">
-	<div class="title title-color"> <img class="title-img" src="${ctxStatic}/common/img/modules/title_icon.svg" > <span class="title-text"> 医疗质量安全标准运行监测系统 </span> </div>
+	<div class="title title-color"> <img class="title-img" src="${ctxStatic}/common/img/modules/title_icon.svg" > <span class="title-text"> 医院流程标准化管理平台 </span> </div>
 		<div class="nav_list">
 			<ul>
 				<li ><a href="/ps/a/ope">首页</a></li>

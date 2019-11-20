@@ -13,6 +13,9 @@ body {
 .wrapper-content{
 	margin-top:133px;
 }
+.wrapper-content1{
+  margin-top:5px;
+}
 .comming_soon{
 
     /*设置背景图片不重复*/
@@ -9982,7 +9985,7 @@ body {
 	background:#FAFAFA;
 }
 .report-page-table td, .report-page-tables th {
-    text-align: center;
+  flowchart.jsp;
     padding: 16px;
 }
 

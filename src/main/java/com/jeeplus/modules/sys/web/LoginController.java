@@ -321,6 +321,14 @@ public class LoginController extends BaseController{
 		return "modules/sys/login/manageMission";
 	}
 	/**
+	 * 点击进入管理要求页
+	 */
+	@RequiresPermissions("user")
+	@RequestMapping(value = "${adminPath}/managerRequire")
+	public String managerRequire(HttpServletRequest request, HttpServletResponse response) {
+		return "modules/sys/login/managerRequire";
+	}
+	/**
 	 * 点击进入评估表
 	 */
 	@RequiresPermissions("user")

@@ -3,6 +3,7 @@ C:\idel_workspace\ps\src\main\java\com\jeeplus\modules\stand\ope\opeparameters\s
 C:\idel_workspace\ps\src\main\java\com\jeeplus\modules\test\manytoone\service\GoodsService.java
 C:\idel_workspace\ps\src\main\java\com\jeeplus\modules\monitor\web\MonitorController.java
 C:\idel_workspace\ps\src\main\java\com\jeeplus\modules\test\manytomany\service\StudentService.java
+C:\idel_workspace\ps\src\main\java\com\jeeplus\modules\stand\ope\managerequire\mapper\ManageRequireMapper.java
 C:\idel_workspace\ps\src\main\java\net\oschina\j2cache\CacheExpiredListener.java
 C:\idel_workspace\ps\src\main\java\com\jeeplus\common\utils\FileUtils.java
 C:\idel_workspace\ps\src\main\java\com\jeeplus\modules\stand\ope\standconfig\web\OpeQcStandConfigController.java
@@ -31,6 +32,7 @@ C:\idel_workspace\ps\src\main\java\com\jeeplus\common\utils\security\CryptoUtil.
 C:\idel_workspace\ps\src\main\java\com\jeeplus\common\utils\StringUtils.java
 C:\idel_workspace\ps\src\main\java\com\jeeplus\modules\stand\ope\indexform\entity\OpeHorizontalHeading.java
 C:\idel_workspace\ps\src\main\java\com\jeeplus\common\utils\base\BooleanUtil.java
+C:\idel_workspace\ps\src\main\java\com\jeeplus\modules\stand\ope\managerequire\service\ManageRequireService.java
 C:\idel_workspace\ps\src\main\java\com\jeeplus\modules\stand\ope\operadar\service\OpeRadarService.java
 C:\idel_workspace\ps\src\main\java\com\jeeplus\modules\test\one\form\service\Leave2Service.java
 C:\idel_workspace\ps\src\main\java\com\jeeplus\core\servlet\ValidateCodeServlet.java
@@ -412,6 +414,7 @@ C:\idel_workspace\ps\src\main\java\com\jeeplus\modules\test\grid\web\TestCountry
 C:\idel_workspace\ps\src\main\java\com\jeeplus\modules\echarts\web\pie\PieSample1.java
 C:\idel_workspace\ps\src\main\java\com\jeeplus\modules\test\activiti\web\TestAuditController.java
 C:\idel_workspace\ps\src\main\java\com\jeeplus\modules\test\one\dialog\mapper\Leave1Mapper.java
+C:\idel_workspace\ps\src\main\java\com\jeeplus\modules\stand\ope\managerequire\web\ManageRequireController.java
 C:\idel_workspace\ps\src\main\java\com\jeeplus\modules\test\manytomany\web\StudentController.java
 C:\idel_workspace\ps\src\main\java\com\jeeplus\common\utils\concurrent\ThreadDumpper.java
 C:\idel_workspace\ps\src\main\java\com\jeeplus\modules\echarts\web\treemap\TreemapSample.java
@@ -495,6 +498,7 @@ C:\idel_workspace\ps\src\main\java\com\jeeplus\modules\test\onetomany\form\mappe
 C:\idel_workspace\ps\src\main\java\com\jeeplus\core\web\Servlets.java
 C:\idel_workspace\ps\src\main\java\com\jeeplus\core\persistence\JSTreeEntity.java
 C:\idel_workspace\ps\src\main\java\com\jeeplus\modules\test\manytoone\web\CategoryController.java
+C:\idel_workspace\ps\src\main\java\com\jeeplus\modules\stand\ope\managerequire\entity\ManageRequire.java
 C:\idel_workspace\ps\src\main\java\com\jeeplus\modules\sys\mapper\DataRuleMapper.java
 C:\idel_workspace\ps\src\main\java\com\jeeplus\modules\test\treetable\dialog\service\Car1Service.java
 C:\idel_workspace\ps\src\main\java\net\oschina\j2cache\CacheChannel.java
