@@ -6699,7 +6699,7 @@ body {
   margin-top: 50px;
   overflow-x: hidden;
   transition: all 0.2s ease-in-out;
-  height: calc(100% - 50px);
+  height: calc(100% );
 }
 #body-container .home-stats .hvr-wobble-horizontal {
   display: block;

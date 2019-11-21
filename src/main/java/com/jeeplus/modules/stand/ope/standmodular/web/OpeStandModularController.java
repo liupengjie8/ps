@@ -68,7 +68,23 @@ public class OpeStandModularController extends BaseController {
 		model.addAttribute("opeStandModular", opeStandModular);
 		return "stand/ope/standmodular/opeStandModularList";
 	}
-	
+
+	/**
+	 * 问题库页面
+	 */
+	@RequiresPermissions("user")
+	@RequestMapping(value = {"questionBank", ""})
+	public String questionBank(OpeStandModular opeStandModular, Model model) {
+		return "stand/ope/standmodular/questionBankPage";
+	}
+	/**
+	 * 评测概况
+	 */
+	@RequiresPermissions("user")
+	@RequestMapping(value = {"gradeReview", ""})
+	public String gradeReview(OpeStandModular opeStandModular, Model model) {
+		return "stand/ope/standmodular/gradeReviewPage";
+	}
 		/**
 	 * 标准模块列表数据
 	 */

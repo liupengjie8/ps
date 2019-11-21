@@ -23,7 +23,7 @@
 
 <body class="">
 	<nav class="navbar topnav-navbar navbar-fixed-top" role="navigation">
-			<div class="title title-color"> <img class="title-img" src="${ctxStatic}/common/img/modules/title_icon.svg" > <span class="title-text"> 医院流程标准化管理平台 </span> </div>
+		<div class="title title-color"> <img class="title-img" width="48px" style="margin-top: 8px" src="${ctxStatic}/common/img/301.png" > <span class="title-text"> 中国人民解放军总医院（301医院） </span><span class="title-text1" style="margin-left: 1120px;margin-top:15px"></span> </div>
 		    <div class="navbar-header text-center">
 			<button type="button" class="navbar-toggle" id="showMenu">
 				<span class="sr-only">Toggle navigation</span> <span
@@ -35,12 +35,9 @@
         <div class="right_head">
 			<div class="nav_list">
 				<ul>
-					<li id="m1"><a href="/ps/a/ope">首页</a></li>
-					<li id="m2" class="active"><a href="/ps/a/monitor/monitor/monitor" target="iframe6">运行监测</a></li>
-					<li id="m3"><a  href="/ps/a/unaccomplished/unaccomplished/unaccomplished" target="iframe6">监测报告</a></li>
-					<li id="m4"><a href="patientDetail">个案查询</a></li>
-					<li id="m5"><a  href="/ps/a/unaccomplished/unaccomplished/unaccomplished" target="iframe6">运行报告</a></li>
-					<li id="m6"><a href="systemControl">系统设置</a></li>
+					<li id="m1" ><a href="${ctx}/ope/gradeReview" target="iframe0">评测概况</a></li>
+					<li id="m3"><a  href="${ctx}/ope/manageMissionSys" target="iframe0">评测任务</a></li>
+					<li id="m6" class="active"><a href="/ps/a/ope/systemControlGradeReview">系统设置</a></li>
 				</ul>
 				<ul class="nav navbar-nav pull-right navbar-right">
 				<!-- <li class="dropdown color-picker">
@@ -88,71 +85,27 @@
 			
 			</div>
 			<div class="title_box ">
-				<h2 class="page_title"> 手术服务标准运行监测</h2>
+				<!-- <h2  > 手术服务标准运行监测预警</h2>
 				<div class="ico_list">
 					<ul>
-						<a href='/ps/a/flowchart/flowChart/flowChart' target="iframe6" title="流程图"><li class="ico"></li></a>
-						<a href='/ps/a/indexForm/indexForm/indexForm' target="iframe6" title="指标报表"><li class="ico1"></li>
-						<a href='/ps/a//monitor/monitor/monitor' target="iframe6" title="运行监测"><li class="ico2"></li>
-						<a href='/ps/a/operadar/operadar/operadar' target="iframe6" title="雷达图"><li class="ico3"></li>
-						<a href='/ps/a/opebarchart/opeBarChart/opeBarChart' target="iframe6" title="柱状图"><li class="ico4"></li>
-						
+						<a href='/ps/a/flowchart/flowChart/flowChart' target="iframe0"><li class="ico"></li></a>
+						<a href='/ps/a/indexForm/indexForm/indexForm' target="iframe0"><li class="ico1"></li>
+						<a href='/ps/a//monitor/monitor/monitor' target="iframe0"><li class="ico2"></li>
+						<a href='/ps/a/operadar/operadar/operadar' target="iframe0"><li class="ico3"></li>
+						<a href='/ps/a/opebarchart/opeBarChart/opeBarChart' target="iframe0"><li class="ico4"></li>
 					</ul>
-				</div>
+				</div> -->
 			</div>
 	
 		</div>
 	</nav>
-	<aside id="sidebar"><a href="/ps/a/opebarchart/opeBarChart/opeBarChart" target="iframe0">
-			</a><div class="side-widgets"><a href="/ps/a/opebarchart/opeBarChart/opeBarChart" target="iframe0">
-				</a><div class="widgets-content"><a href="/ps/a/opebarchart/opeBarChart/opeBarChart" target="iframe0">
-					</a><div class="menu"><a href="/ps/a/opebarchart/opeBarChart/opeBarChart" target="iframe0">
-						</a><div class="menu-body"><a href="/ps/a/opebarchart/opeBarChart/opeBarChart" target="iframe0">
-							</a><ul class="nav nav-pills nav-stacked sidenav" id="1"><a href="/ps/a/opebarchart/opeBarChart/opeBarChart" target="iframe0">
-								</a><li class="panel"><a href="/ps/a/opebarchart/opeBarChart/opeBarChart" target="iframe0">
-</a><a data-toggle="collapse" data-parent="#1" class="" href="#4cbb0aff499044aba652b5f3d9c96a46" aria-expanded="true"><i class="fa null"></i>&nbsp;&nbsp;术前<span class="pull-right fa fa-angle-toggle"></span></a>
-<ul id="4cbb0aff499044aba652b5f3d9c96a46" class="nav collapse in" aria-expanded="true" style="">
-<li class="panel">
-<a data-toggle="collapse" data-parent="#4cbb0aff499044aba652b5f3d9c96a46" class="" href="#b4e95f3f9fc94c2aa6a8bf9ffa02354b" aria-expanded="true"><i class="fa null"></i>&nbsp;&nbsp;手术评估<span class="pull-right fa fa-angle-toggle"></span></a>
-<ul id="b4e95f3f9fc94c2aa6a8bf9ffa02354b" class="nav collapse in" aria-expanded="true" style="">
-<li><a target="iframe0" class="J_menuItem1" href="/ps/a/evaluationSheet" ><i class="fa null"></i>&nbsp;&nbsp;评估表</a></li>
-<li><a target="iframe0" class="J_menuItem1" href="/ps/a/indexForm/indexForm/indexForm?fromPage=leftTree&amp;nodeName=适应证评估" ><i class="fa null"></i>&nbsp;&nbsp;适应证评估</a></li>
-<li><a target="iframe0" class="J_menuItem1" href="/ps/a/indexForm/indexForm/indexForm?fromPage=leftTree&amp;nodeName=等级评估" ><i class="fa null"></i>&nbsp;&nbsp;等级评估</a></li>
-<li><a target="iframe0" class="J_menuItem1" href="/ps/a/indexForm/indexForm/indexForm?fromPage=leftTree&amp;nodeName=风险评估" ><i class="fa null"></i>&nbsp;&nbsp;风险评估</a></li>
-</ul>
-</li>
-<li class="panel">
-<a data-toggle="collapse" data-parent="#4cbb0aff499044aba652b5f3d9c96a46" class="collapsed" href="#763e3bb87f8245b0a711d487c6d837fd" aria-expanded="false"><i class="fa null"></i>&nbsp;&nbsp;手术安排<span class="pull-right fa fa-angle-toggle"></span></a>
-<ul id="763e3bb87f8245b0a711d487c6d837fd" class="nav collapse" aria-expanded="false">
-<li><a target="iframe0" class="J_menuItem1" href="/ps/a/indexForm/indexForm/indexForm?fromPage=leftTree&amp;nodeName=术前讨论" ><i class="fa null"></i>&nbsp;&nbsp;术前讨论</a></li>
-<li><a target="iframe0"  class="J_menuItem1" href="/ps/a/indexForm/indexForm/indexForm?fromPage=leftTree&amp;nodeName=知情同意" ><i class="fa null"></i>&nbsp;&nbsp;知情同意</a></li>
-<li><a target="iframe0" class="J_menuItem1" href="/ps/a/indexForm/indexForm/indexForm?fromPage=leftTree&amp;nodeName=手术审批" ><i class="fa null"></i>&nbsp;&nbsp;手术安排</a></li>
-</ul>
-</li>
-<li class="panel">
-<a data-toggle="collapse" data-parent="#4cbb0aff499044aba652b5f3d9c96a46" class="collapsed" href="#af8d38d3462b4d7bb2da69771662f2c5" aria-expanded="false"><i class="fa null"></i>&nbsp;&nbsp;术前准备<span class="pull-right fa fa-angle-toggle"></span></a>
-<ul id="af8d38d3462b4d7bb2da69771662f2c5" class="nav collapse" aria-expanded="false">
-<li><a target="iframe0" class="J_menuItem1" href="/ps/a/indexForm/indexForm/indexForm?fromPage=leftTree&amp;nodeName=术前访视" ><i class="fa null"></i>&nbsp;&nbsp;术前访视</a></li>
-<li><a target="iframe0" class="J_menuItem1" href="/ps/a/indexForm/indexForm/indexForm?fromPage=leftTree&amp;nodeName=术前医嘱" ><i class="fa null"></i>&nbsp;&nbsp;术前医嘱</a></li>
-<li><a target="iframe0" class="J_menuItem1" href="/ps/a/indexForm/indexForm/indexForm?fromPage=leftTree&amp;nodeName=器械准备" ><i class="fa null"></i>&nbsp;&nbsp;器械准备</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="panel">
-<a data-toggle="collapse" data-parent="#1" class="collapsed" href="#b3fc22077a814c5480750b29cbb18cda" aria-expanded="false"><i class="fa null"></i>&nbsp;&nbsp;术中<span class="pull-right fa fa-angle-toggle"></span></a>
-<ul id="b3fc22077a814c5480750b29cbb18cda" class="nav collapse" aria-expanded="false" style="height: 0px;">
-</ul>
-</li>
-<li class="panel">
-<a data-toggle="collapse" data-parent="#1" class="collapsed" href="#2f21ac5f49564b1580ca60afd8ebe6b1" aria-expanded="false"><i class="fa null"></i>&nbsp;&nbsp;术后<span class="pull-right fa fa-angle-toggle"></span></a>
-<ul id="2f21ac5f49564b1580ca60afd8ebe6b1" class="nav collapse" aria-expanded="false">
-</ul>
-</li>
-
-</ul>
-</li>
-
+	<aside id="sidebar">
+			<div class="side-widgets">
+				<div class="widgets-content">
+					<div class="menu">
+						<div class="menu-body">
+							<ul class="nav nav-pills nav-stacked sidenav" id="1">
+								<t:aniMenu menu="${fns:getTopMenu()}"></t:aniMenu>
 							</ul>
 						</div>
 					</div>
@@ -173,7 +126,7 @@
 					
 					<div class="J_mainContent" id="content-main"
 						style="${cookie.tab.value!=false?'height:calc(100% - 40px)':'height:calc(100%)'}">
-						<iframe class="J_iframe" name="iframe6" width="100%" height="100%" src="${ctx}/monitor/monitor/monitor" frameborder="0" data-id="${ctx}/monitor/monitor/monitor" seamless></iframe>
+						<iframe class="J_iframe" name="iframe1" width="100%" height="100%" src="${ctx}/standmodular/opeStandModular/list" frameborder="0" data-id="${ctx}/opedetail/opeDetail/opeDetail" seamless></iframe>
 					</div>
 				</div>
 			</div>
@@ -199,6 +152,14 @@ $(function(){
 		$("#m5").removeClass("active");  
 		$("#m6").removeClass("active");   
 	});
+	$("#m6").click(function(){ // 为ID为toa的标签绑定click事件
+		$("#m6").addClass("active");   
+		$("#m1").removeClass("active");   
+		$("#m3").removeClass("active");   
+		$("#m4").removeClass("active");  
+		$("#m5").removeClass("active");  
+		$("#m2").removeClass("active");   
+	});
 	$("#m3").click(function(){ // 为ID为toa的标签绑定click事件
 		$("#m3").addClass("active");   
 		$("#m1").removeClass("active");   
@@ -214,14 +175,6 @@ $(function(){
 		$("#m4").removeClass("active");  
 		$("#m2").removeClass("active");  
 		$("#m6").removeClass("active");   
-	});
-	$("#m6").click(function(){ // 为ID为toa的标签绑定click事件
-		$("#m6").addClass("active");   
-		$("#m1").removeClass("active");   
-		$("#m3").removeClass("active");   
-		$("#m4").removeClass("active");  
-		$("#m5").removeClass("active");  
-		$("#m2").removeClass("active");   
 	});
 		$('.theme-picker').click(function() {
 			changeTheme($(this).attr('data-theme'));

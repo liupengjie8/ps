@@ -16,6 +16,7 @@ public class OpeStandModular extends DataEntity<OpeStandModular> {
 	
 	private static final long serialVersionUID = 1L;
 	private String modularName;		// 模块名称
+	private String yycj;		// 模块名称
 	private Boolean isQuilified;
 	
 	public Boolean getIsQuilified() {
@@ -39,8 +40,16 @@ public class OpeStandModular extends DataEntity<OpeStandModular> {
 		return modularName;
 	}
 
+
 	public void setModularName(String modularName) {
 		this.modularName = modularName;
 	}
-	
+	@ExcelField(title="应用场景", align=2, sort=7)
+	public String getYycj() {
+		return yycj;
+	}
+
+	public void setYycj(String yycj) {
+		this.yycj = yycj;
+	}
 }

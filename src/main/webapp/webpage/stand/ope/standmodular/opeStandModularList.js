@@ -101,7 +101,23 @@ $(document).ready(function() {
 				   </c:choose>
 		         }
 		       
-		    }
+		    },{
+					   field: 'yycj',
+					   title: '应用场景',
+					   sortable: true,
+					   sortName: 'yycj',
+					   formatter:function(value, row , index){
+						   if(index<=5){
+							   return "团标、院标";
+						   }else if(index<=10){
+							   return "JCI";
+						   }else{
+							   return "团标";
+						   }
+					   }
+
+				   }
+
 			,{
 		        field: 'remarks',
 		        title: '备注信息',

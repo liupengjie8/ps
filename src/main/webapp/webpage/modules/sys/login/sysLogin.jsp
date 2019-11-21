@@ -99,8 +99,13 @@
 $(function(){
 		$('.theme-picker').click(function() {
 			changeTheme($(this).attr('data-theme'));
-		}); 	
-	
+		});
+	$("#loginForm").submit(function(e){
+		if($("#standType").val()=="流程梳理"){
+			window.open("http://120.27.26.109:6011/Account/LogOn2","_blank");
+			return false;
+		}
+	});
 });
 
 function changeTheme(theme) {

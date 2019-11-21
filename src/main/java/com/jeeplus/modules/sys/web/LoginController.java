@@ -278,14 +278,26 @@ public class LoginController extends BaseController{
 					&& indexStyle.equalsIgnoreCase("jp")) {
 				//return "modules/sys/login/sysIndex-jp";
 				if(request.getSession().getAttribute("standType").equals("医院等级标准（2018版）")){
-					return "modules/sys/login/gradeHospitalReview";
+					return "modules/sys/login/gradeReview";
+				}
+				if(request.getSession().getAttribute("standType").equals("系统管理")){
+					return "modules/sys/login/systemManage";
+				}
+				if(request.getSession().getAttribute("standType").equals("问题库")){
+					return "modules/sys/login/questionBank";
 				}
 				return "modules/sys/login/modules";
 			}
  
 			//return "modules/sys/login/sysIndex";
 			if(request.getSession().getAttribute("standType").equals("医院等级标准（2018版）")){
-				return "modules/sys/login/gradeHospitalReview";
+				return "modules/sys/login/gradeReview";
+			}
+			if(request.getSession().getAttribute("standType").equals("系统管理")){
+				return "modules/sys/login/systemManage";
+			}
+			if(request.getSession().getAttribute("standType").equals("问题库")){
+				return "modules/sys/login/questionBank";
 			}
 			return "modules/sys/login/modules";
 		}
@@ -316,7 +328,7 @@ public class LoginController extends BaseController{
 	 * 点击进入管理任务页
 	 */
 	@RequiresPermissions("user")
-	@RequestMapping(value = "${adminPath}/manageMission")
+	@RequestMapping(value = "${adminPath}/ope/manageMission")
 	public String manageMission(HttpServletRequest request, HttpServletResponse response) {
 		return "modules/sys/login/manageMission";
 	}
@@ -388,6 +400,27 @@ public class LoginController extends BaseController{
 	public String systemControl(HttpServletRequest request, HttpServletResponse response) {
 		//return "modules/sys/login/home";
 		return "modules/sys/login/sysIndex-system";
+	}
+	/**
+	 * 点击进入个案查询
+	 */
+	@RequiresPermissions("user")
+	@RequestMapping(value = "${adminPath}/ope/systemControlGradeReview")
+	public String systemControlGradeReview(HttpServletRequest request, HttpServletResponse response) {
+		//return "modules/sys/login/home";
+		return "modules/sys/login/gradeReview-system";
+	}
+	@RequiresPermissions("user")
+	@RequestMapping(value = "${adminPath}/ope/gradeReview")
+	public String gradeReview(HttpServletRequest request, HttpServletResponse response) {
+		//return "modules/sys/login/home";
+		return "modules/sys/login/gradeReview";
+	}
+	@RequiresPermissions("user")
+	@RequestMapping(value = "${adminPath}/ope/manageMissionSys")
+	public String manageMissionSys(HttpServletRequest request, HttpServletResponse response) {
+		//return "modules/sys/login/home";
+		return "modules/sys/login/gradeReview-mission";
 	}
 	/**
 	 * 切换风格
