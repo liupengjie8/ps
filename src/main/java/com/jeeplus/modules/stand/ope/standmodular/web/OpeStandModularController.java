@@ -73,7 +73,7 @@ public class OpeStandModularController extends BaseController {
 	 * 问题库页面
 	 */
 	@RequiresPermissions("user")
-	@RequestMapping(value = {"questionBank", ""})
+	@RequestMapping(value = {"questionBank"})
 	public String questionBank(OpeStandModular opeStandModular, Model model) {
 		return "stand/ope/standmodular/questionBankPage";
 	}

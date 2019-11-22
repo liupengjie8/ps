@@ -124,12 +124,17 @@ $(document).ready(function() {
 					   sortable: true,
 					   sortName: 'yycj',
 					   formatter:function(value, row , index){
-						   if(row.row<=5){
-							   return "团标、院标";
-						   }else if(row.row<=10){
-							   return "JCI";
+						   var standType =$("#standType").val();
+						   if(standType=="医院等级标准（2018版）"){
+							   return "等级评审";
 						   }else{
-							   return "团标";
+							   if(index==1 || index==3|| index==6|| index==8){
+								   return "团标、等级评审";
+							   }else if(index==2 || index==5|| index==7|| index==9){
+								   return "JCI";
+							   }else{
+								   return "团标";
+							   }
 						   }
 					   }
 

@@ -139,7 +139,19 @@ $(document).ready(function() {
 		        sortable: true,
 		        sortName: 'standType',
 		        formatter:function(value, row , index){
-		        	return jp.getDictLabel(${fns:toJson(fns:getDictList('ope_stand_type'))}, value, "-");
+		        	/*return jp.getDictLabel(${fns:toJson(fns:getDictList('ope_stand_type'))}, value, "-");*/
+					var standType =$("#standType").val();
+					if(standType=="医院等级标准（2018版）"){
+						return "等级评审";
+					}else{
+						if(index==1 || index==3|| index==6|| index==8){
+							return "团标、等级评审";
+						}else if(index==2 || index==5|| index==7|| index==9){
+							return "JCI";
+						}else{
+							return "团标";
+						}
+					}
 		        }
 		       
 		    }

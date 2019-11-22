@@ -14,6 +14,7 @@
 	<div class="panel panel-primary">
 	<div class="panel-heading">
 		<h3 class="panel-title">标准流程列表</h3>
+		<input type="hidden" id="standType" value="${standType }">
 	</div>
 	<div class="panel-body">
 	

@@ -14,6 +14,7 @@
 	<div class="panel panel-primary">
 	<div class="panel-heading">
 		<h3 class="panel-title">标准模块列表</h3>
+		<input type="hidden" id="standType" value="${standType }">
 	</div>
 	<div class="panel-body">
 	
@@ -30,7 +31,7 @@
 	</form:form>
 	</div>
 	</div>
-	
+
 	<!-- 工具栏 -->
 	<div id="toolbar">
 
