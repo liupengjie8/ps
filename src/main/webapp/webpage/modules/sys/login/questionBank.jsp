@@ -40,7 +40,7 @@
 					<li id="m3"><a  href="/ps/a/unaccomplished/unaccomplished/unaccomplished" target="iframe0">监测报告</a></li>
 					<li id="m4" ><a href="patientDetail">个案查询</a></li>
 					<li id="m5" ><a  href="/ps/a/unaccomplished/unaccomplished/unaccomplished" target="iframe0">运行报告</a></li>--%>
-					<li id="m6" class="active"><a href="#" >问题库</a></li>
+					<li id="m6" class="active"><a href="#" >持续改进</a></li>
 				</ul>
 				<ul class="nav navbar-nav pull-right navbar-right">
 				<!-- <li class="dropdown color-picker">
@@ -109,7 +109,7 @@
 						<div class="menu-body">
 							<ul class="nav nav-pills nav-stacked sidenav" id="1">
 								<li class="panel">
-									<a data-toggle="collapse" data-parent="#1" class="" href="#5575b66ff0c94fba966e066e881e38f0" aria-expanded="true"><i class="fa fa fa-columns"></i>&nbsp;&nbsp;问题库</a>
+									<a data-toggle="collapse" data-parent="#1" class="" href="#5575b66ff0c94fba966e066e881e38f0" aria-expanded="true"><i class="fa fa fa-columns"></i>&nbsp;&nbsp;持续改进</a>
 									<ul id="5575b66ff0c94fba966e066e881e38f0" class="nav collapse in" aria-expanded="true" style="">
 
 									</ul>
