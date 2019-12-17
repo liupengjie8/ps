@@ -89,7 +89,7 @@ $(document).ready(function() {
 		        title: '流程',
 		        sortable: true,
 		        sortName: 'opeFlowChartTable.text'
-		        ,formatter:function(value, row , index){
+		        /*,formatter:function(value, row , index){
 
 			   if(value == null || value ==""){
 				   value = "-";
@@ -106,7 +106,7 @@ $(document).ready(function() {
 			      </c:otherwise>
 			   </c:choose>
 
-		        }
+		        }*/
 		       
 		    }
 			,{

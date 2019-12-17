@@ -60,7 +60,7 @@
 	
     <select id="getFlowChartData" resultType="com.jeeplus.modules.stand.ope.flowchart.entity.OpeFlowChart" parameterType="com.jeeplus.modules.stand.ope.flowchart.entity.OpeFlowChart">
 		SELECT 
-		a.id AS "id",
+		a.id AS "chartId",
 		a.page_id AS "pageId",
 		a.t_text AS "text",
 		a.next_low_level AS "nextLowLevel",
@@ -70,7 +70,7 @@
 		a.description AS "description",
 		a.status AS "status",
 		a.document_url AS "documentUrl",
-		a.chart_id AS "chartId"
+		a.chart_id AS "id"
 		FROM ope_flow_chart a
 		
 		WHERE a.page_id = #{pageId}

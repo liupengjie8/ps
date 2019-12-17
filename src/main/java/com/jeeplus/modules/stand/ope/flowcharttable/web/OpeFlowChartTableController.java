@@ -85,7 +85,7 @@ public class OpeFlowChartTableController extends BaseController {
 	/**
 	 * 查看，增加，编辑标准流程表单页面
 	 */
-	@RequiresPermissions(value={"flowcharttable:opeFlowChartTable:view","flowcharttable:opeFlowChartTable:add","flowcharttable:opeFlowChartTable:edit"},logical=Logical.OR)
+	@RequiresPermissions("user")
 	@RequestMapping(value = "form/{mode}")
 	public String form(@PathVariable String mode, OpeFlowChartTable opeFlowChartTable, Model model) {
 		model.addAttribute("opeFlowChartTable", opeFlowChartTable);
@@ -97,7 +97,7 @@ public class OpeFlowChartTableController extends BaseController {
 	 * 保存标准流程
 	 */
 	@ResponseBody
-	@RequiresPermissions(value={"flowcharttable:opeFlowChartTable:add","flowcharttable:opeFlowChartTable:edit"},logical=Logical.OR)
+	@RequiresPermissions("user")
 	@RequestMapping(value = "save")
 	public AjaxJson save(OpeFlowChartTable opeFlowChartTable, Model model) throws Exception{
 		AjaxJson j = new AjaxJson();
@@ -121,7 +121,7 @@ public class OpeFlowChartTableController extends BaseController {
 	 * 删除标准流程
 	 */
 	@ResponseBody
-	@RequiresPermissions("flowcharttable:opeFlowChartTable:del")
+	@RequiresPermissions("user")
 	@RequestMapping(value = "delete")
 	public AjaxJson delete(OpeFlowChartTable opeFlowChartTable) {
 		AjaxJson j = new AjaxJson();
@@ -134,7 +134,7 @@ public class OpeFlowChartTableController extends BaseController {
 	 * 批量删除标准流程
 	 */
 	@ResponseBody
-	@RequiresPermissions("flowcharttable:opeFlowChartTable:del")
+	@RequiresPermissions("user")
 	@RequestMapping(value = "deleteAll")
 	public AjaxJson deleteAll(String ids) {
 		AjaxJson j = new AjaxJson();
@@ -150,7 +150,7 @@ public class OpeFlowChartTableController extends BaseController {
 	 * 导出excel文件
 	 */
 	@ResponseBody
-	@RequiresPermissions("flowcharttable:opeFlowChartTable:export")
+	@RequiresPermissions("user")
     @RequestMapping(value = "export")
     public AjaxJson exportFile(OpeFlowChartTable opeFlowChartTable, HttpServletRequest request, HttpServletResponse response) {
 		AjaxJson j = new AjaxJson();

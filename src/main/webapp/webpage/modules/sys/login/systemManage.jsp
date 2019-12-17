@@ -111,7 +111,7 @@
 								<li class="panel">
 									<a data-toggle="collapse" data-parent="#1" class="" href="#5575b66ff0c94fba966e066e881e38f0" aria-expanded="true"><i class="fa fa fa-columns"></i>&nbsp;&nbsp;参数维护<span class="pull-right fa fa-angle-toggle"></span></a>
 									<ul id="5575b66ff0c94fba966e066e881e38f0" class="nav collapse in" aria-expanded="true" style="">
-										<li><a class="J_menuItem" href="/ps/a/standmodular/opeStandModular" data-index="2"><i class="fa fa fa-th"></i>&nbsp;&nbsp;模块</a></li>
+										<li><a class="J_menuItem" href="/ps/a/standmodular/opeStandModular/list" data-index="2"><i class="fa fa fa-th"></i>&nbsp;&nbsp;模块</a></li>
 										<li><a class="J_menuItem" href="/ps/a/flowcharttable/opeFlowChartTable" data-index="3"><i class="fa fa fa-th"></i>&nbsp;&nbsp;流程</a></li>
 										<li><a class="J_menuItem" href="/ps/a/standconfig/opeQcStandConfig" data-index="4"><i class="fa fa fa-th"></i>&nbsp;&nbsp;标准</a></li>
 					<%--					<li><a class="J_menuItem" href="/ps/a/standindex/opeStIndex" data-index="5"><i class="fa fa fa-th"></i>&nbsp;&nbsp;指标</a></li>

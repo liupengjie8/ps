@@ -34,9 +34,24 @@
 	
 	<!-- 工具栏 -->
 	<div id="toolbar">
+			<button id="add" class="btn btn-primary" onclick="add()">
+				<i class="glyphicon glyphicon-plus"></i> 新建
+			</button>
+			<button id="edit" class="btn btn-success" disabled onclick="edit()">
+				<i class="glyphicon glyphicon-edit"></i> 修改
+			</button>
+			<button id="remove" class="btn btn-danger" disabled onclick="deleteAll()">
+				<i class="glyphicon glyphicon-remove"></i> 删除
+			</button>
 
-				<button id="btnImport" class="btn btn-info"><i class="fa fa-folder-open-o"></i> 导入</button>
-		        <button id="flowchart" onclick="goToFlowChart()" class="btn btn-info"><i class="fa fa-folder-open-o"></i> 浏览流程</button>
+			<button id="export" class="btn btn-warning">
+				<i class="fa fa-file-excel-o"></i> 导出
+			</button>
+			<button id="view" class="btn btn-default" disabled onclick="view()">
+				<i class="fa fa-search-plus"></i> 查看
+			</button>
+			<button id="btnImport" class="btn btn-info"><i class="fa fa-folder-open-o"></i> 导入</button>
+			<button id="flowchart" onclick="goToFlowChart()" class="btn btn-info"><i class="fa fa-folder-open-o"></i> 浏览流程</button>
 	</div>
 		
 	<!-- 表格 -->
